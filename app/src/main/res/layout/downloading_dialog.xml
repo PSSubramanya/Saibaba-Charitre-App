@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_border"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <!--<ImageView-->
+        <!--android:id="@+id/dialoguebreedhenimg"-->
+        <!--android:layout_width="120dp"-->
+        <!--android:layout_height="120dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:padding="10dp"-->
+        <!--android:src="@drawable/ic_audiofiledownloadb" />-->
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="135dp"
+            android:text="Saibaba Chapter number"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:id="@+id/chapternumberdialog2"
+            android:gravity="center"
+            android:textColor="@color/darkgrey"
+            android:fontFamily="@font/fc"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/downloadingtextdialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:text="Downloading......"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center"
+            android:textColor="@color/darkgrey"
+            android:fontFamily="@font/fc"
+            android:textSize="15dp"/>
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
+            android:id="@+id/progressbaraudiodownload"
+            android:layout_gravity="center"/>
+
+
+        <!--<Button-->
+            <!--android:id="@+id/downloadservicebtn"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="@color/greendownload"-->
+            <!--android:textColor="@color/colorWhite"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textSize="11dp"-->
+            <!--android:paddingLeft="120dp"-->
+            <!--android:paddingRight="115dp"-->
+            <!--android:text="Download" />-->
+
+
+        <Button
+            android:id="@+id/cancelbtndialog2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/lightRed"
+            android:paddingLeft="120dp"
+            android:paddingRight="115dp"
+            android:layout_marginTop="10dp"
+            android:text="Cancel"
+            android:textSize="11dp"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"/>
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_file_download_black_24dp"
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:id="@+id/downloadingicondialog"/>
+
+</RelativeLayout>

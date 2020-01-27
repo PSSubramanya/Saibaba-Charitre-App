@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutAppPage">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/saibabaimagee"
+        app:civ_border_color="#EEEEEE"
+        app:civ_border_width="4dp"
+        android:id="@+id/saibabaiconaboutpage"/>
+
+    <TextView
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/darkgrey"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:fontFamily="@font/fn"
+        android:text="About the app"
+        android:id="@+id/abouttheappinfo"/>
+
+
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="This mobile application product by"-->
+        <!--android:textColor="@color/darkgrey"-->
+        <!--android:textSize="15dp"-->
+        <!--android:layout_below="@+id/abouttheappinfo"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:fontFamily="@font/fz"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:id="@+id/productby"-->
+        <!--android:layout_marginTop="60dp"/>-->
+
+    <!--<ImageView-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_marginTop="45dp"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_below="@+id/abouttheappinfo"-->
+        <!--android:layout_toRightOf="@+id/productby"-->
+        <!--android:id="@+id/vintagewinxicon"-->
+        <!--android:src="@drawable/vintagewinxbranda"/>-->
+
+    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="80dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="80dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:src="@drawable/ic_artboard_1"/>&ndash;&gt;-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Vintage Winx"-->
+        <!--android:textColor="@color/darkgrey"-->
+        <!--android:fontFamily="@font/ffv"-->
+        <!--android:id="@+id/vintagewinxname"-->
+        <!--android:layout_below="@+id/productby"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:layout_marginLeft="245dp"-->
+        <!--android:layout_gravity="center"/>-->
+
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Developed by P.S. Subramanya Bhat"-->
+        <!--android:textColor="@color/darkgrey"-->
+        <!--android:fontFamily="@font/ffv"-->
+        <!--android:id="@+id/developersname"-->
+        <!--android:textSize="13dp"-->
+        <!--android:layout_below="@+id/vintagewinxname"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_gravity="center"/>-->
+
+
+
+
+</RelativeLayout>

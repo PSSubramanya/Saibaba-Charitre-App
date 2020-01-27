@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="165dp"
+            android:src="@drawable/satcharitrapagebaba"
+            app:civ_border_color="#EEEEEE"
+            app:civ_border_width="4dp"
+            android:id="@+id/saibabaicon"/>
+
+        <TextView
+            android:layout_width="280dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="20dp"
+            android:text="Shree Sai Charita"
+            android:textSize="30dp"
+            android:id="@+id/saibabatext"
+            android:fontFamily="@font/fz"
+            android:textColor="@color/darkgrey"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

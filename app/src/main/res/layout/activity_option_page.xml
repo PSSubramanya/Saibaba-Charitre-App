@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".OptionPage">
+
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="135dp"
+        android:src="@drawable/saibabacharitrebookicon"
+        android:id="@+id/charitrebook"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/charitrebook"
+        android:text="Charitre Book"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/saicharitretextview1"
+        android:fontFamily="@font/fz"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:id="@+id/charitreicon"
+        android:layout_below="@+id/charitrebook"
+        android:src="@drawable/saibabacharitreaudiofilesicon"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/charitreicon"
+        android:text="Charitre Audio Clips"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/saicharitretextview2"
+        android:fontFamily="@font/fz"/>
+</RelativeLayout>

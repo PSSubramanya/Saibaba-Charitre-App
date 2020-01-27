@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Chapter1audio">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/saibabaimagea"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/saibabaaudioicon"
+        app:civ_border_color="#EEEEEE"
+        app:civ_border_width="4dp"
+        android:layout_marginTop="60dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sai Charitre - Chapter 1"
+        android:textColor="@color/bluetextview"
+        android:layout_below="@+id/saibabaaudioicon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/saibabachapter1textname"/>
+
+    <!--<de.hdodenhof.circleimageview.CircleImageView-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_marginTop="165dp"-->
+        <!--android:src="@drawable/satcharitrapagebaba"-->
+        <!--app:civ_border_color="#EEEEEE"-->
+        <!--app:civ_border_width="4dp"-->
+        <!--android:id="@+id/saibabaicon"/>-->
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/audiopause"
+        android:layout_below="@+id/saibabaaudioicon"
+        android:id="@+id/btnplay"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110dp"
+        android:textSize="20dp"/>
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/audiorewind"
+        android:layout_below="@+id/saibabaaudioicon"
+        android:layout_toLeftOf="@+id/btnplay"
+        android:layout_marginRight="40dp"
+        android:id="@+id/fastrewindplay"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110dp"
+        android:textSize="20dp"/>
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/audiofrwrd"
+        android:layout_below="@+id/saibabaaudioicon"
+        android:layout_toRightOf="@+id/btnplay"
+        android:layout_marginLeft="40dp"
+        android:id="@+id/fastfrwrdplay"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110dp"
+        android:textSize="20dp"/>
+
+
+    <!--<Button-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_below="@+id/fastfrwrdplay"-->
+        <!--android:layout_toRightOf="@+id/fastfrwrdplay"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:background="@drawable/audio_download_button"-->
+        <!--android:layout_marginTop="30dp"/>-->
+
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/seekbar1"
+        android:layout_below="@+id/saibabachapter1textname"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0:00"
+        android:layout_below="@+id/seekbar1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/starttime"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12:12"
+        android:layout_below="@+id/seekbar1"
+        android:layout_toRightOf="@+id/starttime"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/stoptime"/>
+</RelativeLayout>

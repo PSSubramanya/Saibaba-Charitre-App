@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".AudioCharitre/">
+
+
+
+
+    <item
+        android:id="@+id/languagechangeid1"
+        android:title="Language Support"
+        android:icon="@drawable/languageicon"
+        app:showAsAction="always">
+
+
+        <menu>
+
+
+            <item
+                android:id="@+id/kannadaid1"
+                android:title="Kannada"
+                android:icon="@drawable/ic_kannadaiconc"
+                app:showAsAction="always">
+            </item>
+
+
+            <item
+                android:id="@+id/hindiid1"
+                android:title="Hindi"
+                android:icon="@drawable/ic_hindiiconc"
+                app:showAsAction="always">
+            </item>
+
+            <item
+                android:id="@+id/englishid1"
+                android:title="English"
+                android:icon="@drawable/ic_englishicond"
+                app:showAsAction="always">
+            </item>
+
+
+
+        </menu>
+
+    </item>
+
+</menu>

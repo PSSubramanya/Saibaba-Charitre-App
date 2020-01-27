@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".OptionPage/">
+
+
+    <item
+        android:id="@+id/appinfoid"
+        android:title="App Info"
+        android:icon="@drawable/infobutton"
+        app:showAsAction="always">
+    </item>
+
+
+    <!--<item-->
+        <!--android:id="@+id/languagechangeid"-->
+        <!--android:title="Language Support"-->
+        <!--android:icon="@drawable/languageicon"-->
+        <!--app:showAsAction="always">-->
+
+
+        <!--<menu>-->
+
+
+            <!--<item-->
+                <!--android:id="@+id/kannadaid"-->
+                <!--android:title="Kannada"-->
+                <!--android:icon="@drawable/kannadaicon"-->
+                <!--app:showAsAction="always">-->
+            <!--</item>-->
+
+
+            <!--<item-->
+                <!--android:id="@+id/hindiid"-->
+                <!--android:title="Hindi"-->
+                <!--android:icon="@drawable/hindiicona"-->
+                <!--app:showAsAction="always">-->
+            <!--</item>-->
+
+            <!--<item-->
+                <!--android:id="@+id/englishid"-->
+                <!--android:title="English"-->
+                <!--android:icon="@drawable/englishicon"-->
+                <!--app:showAsAction="always">-->
+            <!--</item>-->
+
+
+
+        <!--</menu>-->
+
+    <!--</item>-->
+
+
+</menu>
