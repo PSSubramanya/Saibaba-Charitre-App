@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "298232627587",
-    "firebase_url": "https://saibaba-charitre-app.firebaseio.com",
-    "project_id": "saibaba-charitre-app",
-    "storage_bucket": "saibaba-charitre-app.appspot.com"
+    "project_number": "32182709790",
+    "firebase_url": "https://saibaba-charitre-app-b1977.firebaseio.com",
+    "project_id": "saibaba-charitre-app-b1977",
+    "storage_bucket": "saibaba-charitre-app-b1977.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:298232627587:android:4f47206d5edbaee34c36b6",
+        "mobilesdk_app_id": "1:32182709790:android:65ac9512396444d7f4c80f",
         "android_client_info": {
           "package_name": "com.example.saibabacharitre"
         }
       },
       "oauth_client": [
         {
-          "client_id": "298232627587-31m5ggfhimup7ciocpt9ard3r6aj822s.apps.googleusercontent.com",
+          "client_id": "32182709790-la73bgk81ndo8e91ukb5ndg9r21oeenq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.saibabacharitre",
@@ -23,20 +23,20 @@
           }
         },
         {
-          "client_id": "298232627587-l04h18dmt6lsb398tjilh4f40cg3bk0v.apps.googleusercontent.com",
+          "client_id": "32182709790-76eak056ne083k7hl7da0n5cmra3j75o.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAX4B-B6XvMuHadM8RuqXyMDkPSNOIqTvg"
+          "current_key": "AIzaSyCV5Ln4kBt_kQSSJzJ5tNPbTklROIlg_Gs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "298232627587-l04h18dmt6lsb398tjilh4f40cg3bk0v.apps.googleusercontent.com",
+              "client_id": "32182709790-76eak056ne083k7hl7da0n5cmra3j75o.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

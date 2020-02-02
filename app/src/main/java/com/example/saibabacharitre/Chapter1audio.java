@@ -4,14 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -25,6 +31,10 @@ public class Chapter1audio extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     private Runnable runnable;
     private Handler handler;
+    private ProgressDialog progressDialog;
+    private ProgressBar progressBar;
+    private boolean playpause;
+    private boolean initialstage = true;
 
     Dialog dialog;
     Dialog dialog1;
@@ -47,6 +57,7 @@ public class Chapter1audio extends AppCompatActivity {
         btnplay = (Button)findViewById(R.id.btnplay);
         fastfrwrdplay = (Button)findViewById(R.id.fastfrwrdplay);
         fastrewindplay = (Button)findViewById(R.id.fastrewindplay);
+//        progressBar = (ProgressBar)findViewById(R.id.progressBar);
 
         saibabachapter1textname = (TextView) findViewById(R.id.saibabachapter1textname);
         starttime = (TextView) findViewById(R.id.starttime);
@@ -56,43 +67,114 @@ public class Chapter1audio extends AppCompatActivity {
         seekbar1 = findViewById(R.id.seekbar1);
 
 
-        String getItem = getIntent().getStringExtra("audioFileName");
 
 
-        if (getItem.equals("0"))
-        {
-            mediaPlayer = MediaPlayer.create(this,R.raw.sri_sai_charitre_chapter_one);
-            saibabachapter1textname.setText("Sai Charitre - Chapter 1");
+        //Firebase audio streaming video from ds virdi
+        mediaPlayer =  new MediaPlayer();
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        progressDialog = new ProgressDialog(this);
 
-//            dialog = new Dialog(Chapter1audio.this);
-//            dialog.setContentView(R.layout.download_dialog);
-//            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//            dialog.show();
-        }
-
-        if (getItem.equals("1"))
-        {
-//            pdfchapter1.fromAsset("sai_chapter 2.pdf").load();
-            mediaPlayer = MediaPlayer.create(this,R.raw.sri_sai_charitre_chapter_two);
-            saibabachapter1textname.setText("Sai Charitre - Chapter 2");
-        }
+//        progressBar.setVisibility(View.VISIBLE);
 
 
-        if (getItem.equals("2"))
-        {
-//            pdfchapter1.fromAsset("sai_chapter 2.pdf").load();
-            mediaPlayer = MediaPlayer.create(this,R.raw.sri_sai_charitre_chapter_three);
-            saibabachapter1textname.setText("Sai Charitre - Chapter 3");
-        }
+
+
+
+        final String getItem = getIntent().getStringExtra("audioFileName");
+
+
+//        if (getItem.equals("0"))
+//        {
+////            mediaPlayer = MediaPlayer.create(this,R.raw.sri_sai_charitre_chapter_one);
+//            saibabachapter1textname.setText("Sai Charitre - Chapter 1");
+////            MediaPlayer mediaPlayer = new MediaPlayer();
+//
+////MItchcoding segmenet
+////            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+////            progressDialog = new ProgressDialog(this);
+////
+////
+////            new MediaPlayer().execute("https://www.ssaurel.com/tmp/mymusic.mp3");
+////            mediaPlayer.start();
+////MItchcoding segmenet end
+//
+//
+//
+//
+////            //simplifiedCodingtutorial
+////            MediaPlayer mediaPlayer = new MediaPlayer();
+////            try {
+////                mediaPlayer.setDataSource("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed");
+////                mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+////                    @Override
+////                    public void onPrepared(MediaPlayer mp) {
+////                        mp.start();
+////                    }
+//////                    public void onPrepared(MediaPlayer mediaPlayer) {
+//////                        mediaPlayer.start();
+//////                    }
+////                });
+////
+////                mediaPlayer.prepare();
+////
+////            }
+////            catch (IOException e)
+////            {
+////                e.printStackTrace();
+////            }
+////            //simplifiedCodingtutorial
+//
+//
+//
+//
+//
+////            dialog = new Dialog(Chapter1audio.this);
+////            dialog.setContentView(R.layout.download_dialog);
+////            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+////            dialog.show();
+//        }
+//
+//        if (getItem.equals("1"))
+//        {
+////            pdfchapter1.fromAsset("sai_chapter 2.pdf").load();
+//            mediaPlayer = MediaPlayer.create(this,R.raw.sri_sai_charitre_chapter_two);
+//            saibabachapter1textname.setText("Sai Charitre - Chapter 2");
+//        }
+//
+//
+//        if (getItem.equals("2"))
+//        {
+////            pdfchapter1.fromAsset("sai_chapter 2.pdf").load();
+//            mediaPlayer = MediaPlayer.create(this,R.raw.sri_sai_charitre_chapter_three);
+//            saibabachapter1textname.setText("Sai Charitre - Chapter 3");
+//        }
+
+
+
+
+
 //        mediaPlayer = MediaPlayer.create(this,R.raw.sri_sai_charitre_chapter_one);
 
 //        starttime.setText(mediaPlayer.getCurrentPosition());
 //        stoptime.setText(mediaPlayer.getDuration());
 
 
-        int currentPosition = mediaPlayer.getCurrentPosition();
+//        int currentPosition = mediaPlayer.getCurrentPosition();
+
+
+
+
+
+
         String total = createTimeLabel(mediaPlayer.getDuration());
         stoptime.setText(total);
+
+
+
+
+
+
+
 //
 //
 //        starttime.setText(currentPosition);
@@ -118,17 +200,104 @@ public class Chapter1audio extends AppCompatActivity {
         btnplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mediaPlayer.isPlaying())
+                //working code
+//                if (mediaPlayer.isPlaying())
+//                {
+//                    mediaPlayer.pause();
+//                    btnplay.setBackgroundResource(R.drawable.audioplay);
+//                }
+//                else
+//                {
+//                    mediaPlayer.start();
+//                    btnplay.setBackgroundResource(R.drawable.audiopause);
+//                    changeSeekbar();
+//
+//
+////                    new Player().execute("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed");
+////                    btnplay.setBackgroundResource(R.drawable.audiopause);
+////                    changeSeekbar();
+//                }
+                //working code
+
+
+
+//                String total = createTimeLabel(mediaPlayer.getDuration());
+//                stoptime.setText(total);
+
+                if (!playpause)
                 {
-                    mediaPlayer.pause();
-                    btnplay.setBackgroundResource(R.drawable.audioplay);
+                    btnplay.setBackgroundResource(R.drawable.audiopause);
+                    if (initialstage)
+                    {
+
+                        if (getItem.equals("0"))
+                        {
+                            new Player().execute("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed");
+                            saibabachapter1textname.setText("Sai Charitre - Chapter 1");
+                            String total = createTimeLabel(mediaPlayer.getDuration());
+                            stoptime.setText(total);
+//                            int length = mediaPlayer.getDuration(); // duration in time in millis
+////                            String durationText = DateUtils.formatElapsedTime(length / 1000);
+//
+//
+//                            String timeLabel = "";
+//                            int min = length / 1000 / 60;
+//                            int sec = length / 1000 % 60;
+//
+//                            timeLabel += min + ":";
+//                            if (sec < 10) timeLabel += "0";
+//                            timeLabel += sec;
+//
+////                            return timeLabel;
+//                            stoptime.setText(timeLabel);
+                        }
+
+                        if (getItem.equals("1"))
+                        {
+                            new Player().execute("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_two.mp3?alt=media&token=0da9fc93-69ca-48c7-b141-79b673ab972e");
+                            saibabachapter1textname.setText("Sai Charitre - Chapter 2");
+//                            String total = createTimeLabel(mediaPlayer.getDuration());
+//                            stoptime.setText(total);
+                        }
+
+                        if (getItem.equals("2"))
+                        {
+                            new Player().execute("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_three.mp3?alt=media&token=73d07986-ff5d-4ad1-b19b-f7f07a6c16b1");
+                            saibabachapter1textname.setText("Sai Charitre - Chapter 3");
+//                            String total = createTimeLabel(mediaPlayer.getDuration());
+//                            stoptime.setText(total);
+                        }
+
+
+//                        new Player().execute("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed");
+                    }
+                    else
+                    {
+                        if (!mediaPlayer.isPlaying())
+                        {
+//                            mediaPlayer.pause();
+//                            btnplay.setBackgroundResource(R.drawable.audioplay);
+                            mediaPlayer.start();
+                            btnplay.setBackgroundResource(R.drawable.audiopause);
+                            changeSeekbar();
+                        }
+
+                    }
+                    playpause = true;
                 }
                 else
                 {
-                    mediaPlayer.start();
-                    btnplay.setBackgroundResource(R.drawable.audiopause);
-                    changeSeekbar();
+                    if (mediaPlayer.isPlaying())
+                    {
+                        mediaPlayer.pause();
+                        btnplay.setBackgroundResource(R.drawable.audioplay);
+                    }
+                    playpause = false;
                 }
+
+
+
+
             }
         });
 
@@ -238,4 +407,72 @@ public class Chapter1audio extends AppCompatActivity {
             handler.postDelayed(runnable,1000);
         }
     }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (mediaPlayer != null) {
+            mediaPlayer.reset();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
+
+
+    class Player extends AsyncTask<String, Void, Boolean> {
+        @Override
+        protected Boolean doInBackground(String... strings) {
+            Boolean prepared = false;
+
+            try {
+                mediaPlayer.setDataSource(strings[0]);
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        initialstage = true;
+                        playpause = false;
+//                        btnplay.setText("Launch Streaming");
+                        mediaPlayer.stop();
+//                        mediaPlayer.reset();
+                    }
+                });
+
+                mediaPlayer.prepare();
+                prepared = true;
+
+            } catch (Exception e) {
+                Log.e("MyAudioStreamingApp", e.getMessage());
+                prepared = false;
+            }
+
+            return prepared;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+
+            if (progressDialog.isShowing()) {
+                progressDialog.cancel();
+            }
+
+            mediaPlayer.start();
+            initialstage = false;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+//            progressDialog.setMessage("Buffering...");
+            progressDialog.show();
+            progressDialog.setContentView(R.layout.progress_dialogbox);
+            progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        }
+    }
+
+
 }

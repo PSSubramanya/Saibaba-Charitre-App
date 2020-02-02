@@ -13,6 +13,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -27,6 +30,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,6 +85,16 @@ public class AudioCharitre extends AppCompatActivity {
         setContentView(R.layout.activity_audio_charitre);
 
 
+
+//        if (haveNetwork())
+//        {
+//
+//        }
+//        else if (!haveNetwork())
+//        {
+//            Toast.makeText(context1, "No Network", Toast.LENGTH_SHORT).show();
+//        }
+
 //        final Animation animation = AnimationUtils.loadAnimation(AudioCharitre.this,R.anim.slidedown);
 
 
@@ -103,10 +117,52 @@ public class AudioCharitre extends AppCompatActivity {
 //            }
 //        });
 
-        AudiolistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
-            {
+
+
+//        audiodownloadbtn = findViewById(R.id.audiodownloadbtn);
+
+        if (haveNetwork())
+        {
+//            audiodownloadbtn = findViewById(R.id.audiodownloadbtn);
+
+//            audiodownloadbtn.setOnClickListener(new View.OnClickListener()
+//            {
+//                @Override
+//                public void onClick(View view) {
+//
+//                    dialog = new Dialog(AudioCharitre.this);
+//                    dialog.setContentView(R.layout.download_dialog);
+//                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                    dialog.show();
+//
+//                    if (dialog.isShowing())
+//                    {
+//                        downloadservicebtn = dialog.findViewById(R.id.downloadservicebtn);
+//                        cancelbtndialog = dialog.findViewById(R.id.cancelbtndialog);
+//
+//
+//                        downloadservicebtn.setOnClickListener(new View.OnClickListener() {
+//                            @SuppressLint("ResourceType")
+//                            @Override
+//                            public void onClick(View view) {
+//                                dialog.dismiss();
+//                                dialog1 = new Dialog(AudioCharitre.this);
+//                                dialog1.setContentView(R.layout.downloading_dialog);
+//                                dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                                dialog1.show();
+//
+//                                downloadingicondialog = view.findViewById(R.id.downloadingicondialog);
+//
+//                            }
+//                        });
+//                    }
+//                }
+//            });
+
+            AudiolistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l)
+                {
 //                String item = PDFlistView.getItemAtPosition(i).toString();
 
 
@@ -118,89 +174,219 @@ public class AudioCharitre extends AppCompatActivity {
 //                startActivity(intent);
 
 
-                audiodownloadbtn = view.findViewById(R.id.audiodownloadbtn);
-
-                audiodownloadbtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog = new Dialog(AudioCharitre.this);
-                        dialog.setContentView(R.layout.download_dialog);
-                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                        dialog.show();
-
-                        if (dialog.isShowing())
-                        {
-                            downloadservicebtn = dialog.findViewById(R.id.downloadservicebtn);
-                            cancelbtndialog = dialog.findViewById(R.id.cancelbtndialog);
 
 
-                            downloadservicebtn.setOnClickListener(new View.OnClickListener() {
-                                @SuppressLint("ResourceType")
+//                if (haveNetwork())
+//                {
+//
+//                }
+//                else if (!haveNetwork())
+//                {
+//                    Toast.makeText(context1, "No Network", Toast.LENGTH_SHORT).show();
+//                }
+
+
+//                "l";
+//                    audiodownloadbtn = view.findViewById(R.id.audiodownloadbtn);
+
+//                audiodownloadbtn.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        dialog = new Dialog(AudioCharitre.this);
+//                        dialog.setContentView(R.layout.download_dialog);
+//                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                        dialog.show();
+//
+//                        if (dialog.isShowing())
+//                        {
+//                            downloadservicebtn = dialog.findViewById(R.id.downloadservicebtn);
+//                            cancelbtndialog = dialog.findViewById(R.id.cancelbtndialog);
+//
+//
+//                            downloadservicebtn.setOnClickListener(new View.OnClickListener() {
+//                                @SuppressLint("ResourceType")
+//                                @Override
+//                                public void onClick(View view) {
+//                                    dialog.dismiss();
+//                                    dialog1 = new Dialog(AudioCharitre.this);
+//                                    dialog1.setContentView(R.layout.downloading_dialog);
+//                                    dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                                    dialog1.show();
+//
+//                                    downloadingicondialog = view.findViewById(R.id.downloadingicondialog);
+//
+////                                    Animation animation = AnimationUtils.loadAnimation(AudioCharitre.this,R.anim.slidedown);
+////                                    downloadingicondialog.startAnimation(animation);
+//
+//
+////                                    IVcon = (ImageView)findViewById(R.id.IVcon);
+////                                    downloadingicondialog.setBackgroundResource(R.anim.slidedown);
+////
+////                                    final AnimationDrawable animcon = (AnimationDrawable)downloadingicondialog.getDrawable();
+////                                    dialog.setCancelable(true);
+////
+////                                    dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+////                                        @Override
+////                                        public void onShow(DialogInterface dialog) {
+////                                            animcon.start();
+////                                        }
+////                                    });
+////                                    dialog.show();
+//
+//
+//
+////                                    for (int i =0; i < 10; i++)
+////                                    {
+////                                        Animation animation = AnimationUtils.loadAnimation(AudioCharitre.this,R.anim.slidedown);
+////
+////                                        downloadingicondialog.startAnimation(animation);
+////                                    }
+//
+//                                }
+//                            });
+//                        }
+//                    }
+//                });
+
+                            String ii = String.valueOf(i);
+                            Intent intent = new Intent(getApplicationContext(),Chapter1audio.class);
+                            intent.putExtra("audioFileName",ii);
+                            startActivity(intent);
+
+                            audiodownloadbtn = view.findViewById(R.id.audiodownloadbtn);
+
+                            audiodownloadbtn.setOnClickListener(new View.OnClickListener()
+                            {
                                 @Override
                                 public void onClick(View view) {
-                                    dialog.dismiss();
-                                    dialog1 = new Dialog(AudioCharitre.this);
-                                    dialog1.setContentView(R.layout.downloading_dialog);
-                                    dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                                    dialog1.show();
 
-                                    downloadingicondialog = view.findViewById(R.id.downloadingicondialog);
+                                    dialog = new Dialog(AudioCharitre.this);
+                                    dialog.setContentView(R.layout.downloading_dialog);
+                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                    dialog.show();
 
-//                                    Animation animation = AnimationUtils.loadAnimation(AudioCharitre.this,R.anim.slidedown);
-//                                    downloadingicondialog.startAnimation(animation);
+                                    if (dialog.isShowing())
+                                    {
 
-
-//                                    IVcon = (ImageView)findViewById(R.id.IVcon);
-//                                    downloadingicondialog.setBackgroundResource(R.anim.slidedown);
-//
-//                                    final AnimationDrawable animcon = (AnimationDrawable)downloadingicondialog.getDrawable();
-//                                    dialog.setCancelable(true);
-//
-//                                    dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-//                                        @Override
-//                                        public void onShow(DialogInterface dialog) {
-//                                            animcon.start();
-//                                        }
-//                                    });
-//                                    dialog.show();
-
-
-
-//                                    for (int i =0; i < 10; i++)
-//                                    {
-//                                        Animation animation = AnimationUtils.loadAnimation(AudioCharitre.this,R.anim.slidedown);
-//
-//                                        downloadingicondialog.startAnimation(animation);
-//                                    }
-
+                                    }
                                 }
                             });
-                        }
+
+
+//                    audiodownloadbtn.setOnClickListener(new View.OnClickListener()
+//                    {
+//                        @Override
+//                        public void onClick(View view) {
+////                            String ii = String.valueOf(i);
+////                            Intent intent = new Intent(getApplicationContext(),Chapter1audio.class);
+////                            intent.putExtra("audioFileName",ii);
+////                            startActivity(intent);
+//                        }
+//                    });
+//                    else if (!haveNetwork())
+//                    {
+//
+//                    }
+
+//                String ii = String.valueOf(i);
+//                Intent intent = new Intent(getApplicationContext(),Chapter1audio.class);
+////              intent.putExtra("pdfFileName",item);
+////              intent.putExtra("pdfFileName",item);
+//                intent.putExtra("audioFileName",ii);
+//                startActivity(intent);
+                }
+            });
+
+//            audiodownloadbtn = (ImageView)findViewById(R.id.audiodownloadbtn);
+//            audiodownloadbtn.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    dialog1 = new Dialog(AudioCharitre.this);
+//                    dialog1.setContentView(R.layout.downloading_dialog);
+//                    dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                    dialog1.show();
+//                }
+//            });
+        }
+
+        else if (!haveNetwork())
+        {
+            AudiolistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l)
+                {
+
+
+                    dialog = new Dialog(AudioCharitre.this);
+                    dialog.setContentView(R.layout.download_dialog);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    dialog.show();
+
+                    if (dialog.isShowing())
+                    {
+                        downloadservicebtn = dialog.findViewById(R.id.downloadservicebtn);
+                        cancelbtndialog = dialog.findViewById(R.id.cancelbtndialog);
+
+
+                        downloadservicebtn.setOnClickListener(new View.OnClickListener() {
+                            @SuppressLint("ResourceType")
+                            @Override
+                            public void onClick(View view) {
+                                dialog.dismiss();
+                                dialog1 = new Dialog(AudioCharitre.this);
+                                dialog1.setContentView(R.layout.downloading_dialog);
+                                dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                dialog1.show();
+
+                                downloadingicondialog = view.findViewById(R.id.downloadingicondialog);
+
+                            }
+                        });
                     }
-                });
 
+                    audiodownloadbtn = view.findViewById(R.id.audiodownloadbtn);
 
+                    audiodownloadbtn.setOnClickListener(new View.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(View view) {
 
-                String ii = String.valueOf(i);
-                Intent intent = new Intent(getApplicationContext(),Chapter1audio.class);
-//              intent.putExtra("pdfFileName",item);
-//              intent.putExtra("pdfFileName",item);
-                intent.putExtra("audioFileName",ii);
-                startActivity(intent);
-            }
-        });
+                            dialog = new Dialog(AudioCharitre.this);
+                            dialog.setContentView(R.layout.downloading_dialog);
+                            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            dialog.show();
 
-//        myrecyclerView1 = (RecyclerView)findViewById(R.id.charitreRecyclerView1);
-//        myrecyclerView1.setHasFixedSize(true);
+                            if (dialog.isShowing())
+                            {
+//                                downloadservicebtn = dialog.findViewById(R.id.downloadservicebtn);
+//                                cancelbtndialog = dialog.findViewById(R.id.cancelbtndialog);
 //
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(context1);
-//        myrecyclerView1.setLayoutManager(layoutManager);
 //
-////        RecyclerViewAdapter adapter = new RecyclerViewAdapter(context,lstContact);
-//        RecyclerViewAdapterAudio adapter = new RecyclerViewAdapterAudio(lstContact1);
+//                                downloadservicebtn.setOnClickListener(new View.OnClickListener() {
+//                                    @SuppressLint("ResourceType")
+//                                    @Override
+//                                    public void onClick(View view) {
+//                                        dialog.dismiss();
+//                                        dialog1 = new Dialog(AudioCharitre.this);
+//                                        dialog1.setContentView(R.layout.downloading_dialog);
+//                                        dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                                        dialog1.show();
 //
-//        initializeData1();
-//        initializeAdapter1();
+//                                        downloadingicondialog = view.findViewById(R.id.downloadingicondialog);
+//
+//                                    }
+//                                });
+                            }
+                        }
+                    });
+                }
+            });
+
+            Toast.makeText(AudioCharitre.this, "No Network", Toast.LENGTH_SHORT).show();
+        }
+
+
+
 
     }
 
@@ -240,31 +426,6 @@ public class AudioCharitre extends AppCompatActivity {
     }
 
 
-//    private void initializeData1()
-//    {
-//        lstContact1 = new ArrayList<>();
-//        lstContact1.add(new CharitreAudioContents("Chapter 1","The wondrous Saint grinding wheat - Obeisances - The story of grinding wheat and its philosophical significance "));
-//        lstContact1.add(new CharitreAudioContents("Chapter 2","Object of writing the work - Incapacity and boldness in the undertaking - Hot discussion - Conferring significant and prophetic title of 'Hemadpant' - Necessity of a Guru "));
-//        lstContact1.add(new CharitreAudioContents("Chapter 3","Sai Baba's sanction and promise - Assignment of work to the devotees - Baba's stories as beacon-light - His motherly love - Rohila's story - His sweet and nectar like words "));
-//        lstContact1.add(new CharitreAudioContents("Chapter 4","Mission of the saints - Shirdi a Holy Tirth - Personality of Sai Baba - Dictum of Goulibua - Appearance of Vitthal - Kshirsagar's story - Das Ganu's bath in Prayag - Immaculate conception of Sai Baba and His first advent in Shirdi - Three Wadas"));
-//        lstContact1.add(new CharitreAudioContents("Chapter 5","Baba's return with Chand Patil's marriage party -Welcomed and addressed as 'Sai' - Contact with other saints - His attire and daily routine - The story of the Padukas - Wrestling bout with Mohiddin and change in life - Turning water into oil - The Pseudo - Guru Javhar All"));
-//        lstContact1.add(new CharitreAudioContents("Chapter 6","Efficacy of the touch of the Guru's hand - Ram Navami Festival - Its origin, transformation etc. - Repairs to the Masjid "));
-//        lstContact1.add(new CharitreAudioContents("Chapter 7","Wonderful Incarnation - Behaviour of Sai Baba - His vogic practices - His all-pervasiveness and mercy - Leper devotee's service - Master Khaparde's plague case - Going to Pandharpur"));
-//        lstContact1.add(new CharitreAudioContents("Chapter 8","Importance of human birth - Sai Baba begging food - Baijabai’s service - Sai Baba's dormitory - His affection for Khushalchand "));
-//        lstContact1.add(new CharitreAudioContents("Chapter 9","Effect of compliance and non-compliance with Baba's orders at the time of taking leave - A few instances -Mendicancy and its necessity - Devotees' (Tarkhad family's) experiences - Baba fed sumptuously"));
-//        lstContact1.add(new CharitreAudioContents("Chapter 10","Sai Baba's mode of life - His sleeping plank - His stay in Shirdi - His teachings - His humility - Nanavali The easiest path "));
-//        lstContact1.add(new CharitreAudioContents("Chapter 11","Sai as Sagun Brahma - Dr. Pandit's worship - Haji Siddik Falke - Control over the elements "));
-//        lstContact1.add(new CharitreAudioContents("Chapter 12","Sai Leelas - Experiences of (1) Kaka Mahajani (2) Dhumal Pleader (3) Mrs. Nimonkar (4) Mule Shastri (5) A Doctor "));
-//    }
-//
-//
-//    private void initializeAdapter1()
-//    {
-////        RecyclerViewAdapter adapter = new RecyclerViewAdapter(context,lstContact);
-//        RecyclerViewAdapterAudio adapter = new RecyclerViewAdapterAudio(lstContact1);
-//        myrecyclerView1.setAdapter(adapter);
-//    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //return super.onCreateOptionsMenu(menu);
@@ -292,5 +453,38 @@ public class AudioCharitre extends AppCompatActivity {
 //        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    private boolean haveNetwork()
+    {
+        boolean have_WIFI = false;
+        boolean have_MobileData = false;
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+//        NetworkInfo[] networkInfo = connectivityManager.getAllNetworkInfo();
+//        Network[] networkInfo = connectivityManager.getAllNetworks();
+//
+//        for (Network info: networkInfo)
+//        {
+//            if (info.get.equals("WIFI"))
+//                have_WIFI = true;
+//        }
+
+        NetworkInfo[] networkInfos = connectivityManager.getAllNetworkInfo();
+
+        for(NetworkInfo info: networkInfos)
+        {
+            if (info.getTypeName().equalsIgnoreCase("WIFI"))
+                if (info.isConnected())
+                    have_WIFI = true;
+
+            if (info.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (info.isConnected())
+                    have_MobileData = true;
+        }
+
+        return have_MobileData||have_WIFI;
+
     }
 }
