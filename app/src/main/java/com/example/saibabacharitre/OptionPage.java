@@ -5,6 +5,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Path;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -68,6 +70,43 @@ public class OptionPage extends AppCompatActivity {
     }
 
 
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        //return super.onCreateOptionsMenu(menu);
+//        getMenuInflater().inflate(R.menu.optionpage_toolbar,menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//
+//        int id = item.getItemId();
+//
+//        if (id == R.id.appinfoid);
+//        {
+////            Toast.makeText(ChoicePage.this, "Click on the icon to choose!", Toast.LENGTH_LONG).show();
+//            Intent intent = new Intent(OptionPage.this,AboutAppPage.class);
+//            startActivity(intent);
+//        }
+//
+//        if (id == R.id.aaratiid);
+//        {
+////            Toast.makeText(ChoicePage.this, "Click on the icon to choose!", Toast.LENGTH_LONG).show();
+//            Intent intent = new Intent(OptionPage.this,AaratiPage.class);
+//            startActivity(intent);
+//        }
+//
+//        if (id == R.id.liverelayid);
+//        {
+//            Toast.makeText(OptionPage.this, "You will get live Saibaba darshana from Shiradi!", Toast.LENGTH_LONG).show();
+////            Intent intent = new Intent(OptionPage.this,AaratiPage.class);
+////            startActivity(intent);
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //return super.onCreateOptionsMenu(menu);
@@ -80,18 +119,38 @@ public class OptionPage extends AppCompatActivity {
 
         int id = item.getItemId();
 
-//        if (id == R.id.languagechangeid);
+//        if (id == R.id.helpbutton)
 //        {
-////            Toast.makeText(ChoicePage.this, "Click on the icon to choose!", Toast.LENGTH_LONG).show();
-////            Intent intent = new Intent(OptionPage.this,AboutUsPage.class);
-////            startActivity(intent);
+//            Toast.makeText(ChoicePage.this, "Click on the icons to choose!", Toast.LENGTH_LONG).show();
 //        }
 
-        if (id == R.id.appinfoid);
+        if (id == R.id.appinfoid)
         {
 //            Toast.makeText(ChoicePage.this, "Click on the icon to choose!", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(OptionPage.this,AboutAppPage.class);
             startActivity(intent);
+        }
+
+
+//        if (id == R.id.aaratiid)
+//        {
+////            Toast.makeText(ChoicePage.this, "Click on the icon to choose!", Toast.LENGTH_LONG).show();
+//            Intent intent = new Intent(OptionPage.this,AaratiPage.class);
+//            startActivity(intent);
+//        }
+
+
+        if (id == R.id.liverelayid)
+        {
+            Toast.makeText(OptionPage.this, "Live Relay from Shiradi", Toast.LENGTH_LONG).show();
+//            Intent intent = new Intent(OptionPage.this,SaiDarshanaPage.class);
+            Intent intent = new Intent(OptionPage.this,TestVideoStreamPage.class);
+//            Intent intent = new Intent(OptionPage.this,ShirdiLiveDarshana.class);
+            startActivity(intent);
+
+//            Uri uri = Uri.parse("https://www.sai.org.in/en/sai-video-popup"); // missing 'http://' will cause crashed
+//            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

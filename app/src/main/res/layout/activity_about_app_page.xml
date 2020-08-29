@@ -87,15 +87,16 @@
         <!--android:layout_marginTop="10dp"-->
         <!--android:layout_marginLeft="20dp"-->
         <!--android:layout_gravity="center"/>-->
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center"
-        android:layout_below="@id/abouttheappinfo"
-        android:layout_marginTop="20dp"
-        android:id="@+id/vintagewinxicon"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/vintagewinxca"/>
+
+    <!--<ImageView-->
+        <!--android:layout_width="120dp"-->
+        <!--android:layout_height="120dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_below="@id/abouttheappinfo"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:id="@+id/vintagewinxicon"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:src="@drawable/vintagewinxca"/>-->
 
 
 

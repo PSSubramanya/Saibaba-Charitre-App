@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="30dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_border"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="195dp"
+            android:text="Saibaba aarati song"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:id="@+id/chapternumberdialog"
+            android:gravity="center"
+            android:textColor="@color/darkgrey"
+            android:fontFamily="@font/fc"
+            android:textSize="15dp"/>
+
+        <!--<TextView-->
+        <!--android:id="@+id/downloaddialog"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="45dp"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:text="Download this audio file for offline service"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:paddingLeft="10dp"-->
+        <!--android:paddingRight="10dp"-->
+        <!--android:gravity="center"-->
+        <!--android:textColor="@color/darkgrey"-->
+        <!--android:fontFamily="@font/fc"-->
+        <!--android:textSize="15dp"/>-->
+
+
+        <ScrollView
+            android:layout_width="320dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/aaratifastfrwrdplay">
+            <TextView
+                android:layout_width="320dp"
+                android:layout_height="160dp"
+                android:layout_below="@+id/aaratifastfrwrdplay"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="30dp"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/fu"
+                android:text="Aarati Sai Baba...
+\nSaukhyadatara Jiva, charanarajatali
+\nDyava dasa visava, bhakta visava
+\nAarati Sai Baba...
+\nJaluniya ananga
+\nSasvarupi rahe danga
+\nMumuksha janan davi.
+\nNija dola Shriranga, dola Shriranga
+\nAarati Sai Baba...
+\nJaya mani jaisa bhava
+\nTayataisa anubhava
+\nDavisi dayaghana,
+\nAisi tuzi he mava, tuzi he mava
+\nAarati Sai Baba...
+\nTumache nama dhyata
+\nHare Sansruthivyatha
+\nAgadha Tava karani
+\nMarga davisi anatha, davisi anatha
+\nAarati Sai Baba...
+\nKaliyuga avatara,
+\nSaguna Brahma sachara
+\nAvatirna zalase
+\nSwami Dutta Digambara, Dutta Digambara.
+\nAarati Sai Baba...
+\nAthan Divasa Gurvari
+\nBhakta kariti vari
+\nPrabhupada Pahavaya
+\nBhava Bhayanivari, bhayanivari.
+\nAarati Sai Baba...
+\nMaza nijadravya theva,
+\nThava charana raja seva
+\nMaghane hechi aata,
+\nTumhan devadideva, devadideva.
+\nAarati Sai Baba...
+\nIchita Dina chatak
+\nNirmala toya nijasukha
+\nPajaven Madhava Ya
+\nSambhala apuli bhaka, apuli bhaka.
+\nAarati Sai Baba..."
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"/>
+        </ScrollView>
+
+
+        <!--<Button-->
+        <!--android:id="@+id/downloadservicebtn"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:background="@color/greendownload"-->
+        <!--android:textColor="@color/colorWhite"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textSize="11dp"-->
+        <!--android:paddingLeft="120dp"-->
+        <!--android:paddingRight="115dp"-->
+        <!--android:text="Download" />-->
+
+
+        <!--<Button-->
+        <!--android:id="@+id/cancelbtndialog"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/greendownload"-->
+        <!--android:paddingLeft="120dp"-->
+        <!--android:paddingRight="115dp"-->
+        <!--android:text="OK"-->
+        <!--android:textSize="11dp"-->
+        <!--android:textColor="@color/colorWhite"-->
+        <!--android:textStyle="bold"/>-->
+
+
+    </LinearLayout>
+
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:text="You are offline"-->
+    <!--android:textSize="15dp"-->
+    <!--android:fontFamily="@font/fc"/>-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="120dp"-->
+    <!--android:layout_height="120dp"-->
+    <!--android:src="@drawable/ic_audiofiledownloadb"-->
+    <!--android:padding="10dp"-->
+    <!--android:layout_marginTop="35dp"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_alignParentTop="true"-->
+    <!--android:textColor="@color/darkgrey"-->
+    <!--android:id="@+id/downloadicondialog"/>-->
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/saibabaimagee"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/aaratisaibabaaudioicon"
+        app:civ_border_color="#EEEEEE"
+        app:civ_border_width="4dp"
+        android:layout_marginTop="30dp"/>
+
+</RelativeLayout>

@@ -19,17 +19,17 @@
 
 
     <!--<ProgressBar-->
-        <!--android:layout_width="100dp"-->
-        <!--android:layout_height="100dp"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginTop="250dp"-->
-        <!--android:id="@+id/progressBar"-->
-        <!--style="?android:attr/progressBarStyleHorizontal"-->
-        <!--android:background="@drawable/circular_shape"-->
-        <!--android:indeterminate="false"-->
-        <!--android:max="100"-->
-        <!--android:progress="35"-->
-        <!--android:progressDrawable="@drawable/circular_customized_progressbar"/>-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="250dp"-->
+    <!--android:id="@+id/progressBar"-->
+    <!--style="?android:attr/progressBarStyleHorizontal"-->
+    <!--android:background="@drawable/circular_shape"-->
+    <!--android:indeterminate="false"-->
+    <!--android:max="100"-->
+    <!--android:progress="35"-->
+    <!--android:progressDrawable="@drawable/circular_customized_progressbar"/>-->
 
 
 
@@ -45,14 +45,14 @@
         android:id="@+id/saibabachapter1textname"/>
 
     <!--<de.hdodenhof.circleimageview.CircleImageView-->
-        <!--android:layout_width="100dp"-->
-        <!--android:layout_height="100dp"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:layout_marginTop="165dp"-->
-        <!--android:src="@drawable/satcharitrapagebaba"-->
-        <!--app:civ_border_color="#EEEEEE"-->
-        <!--app:civ_border_width="4dp"-->
-        <!--android:id="@+id/saibabaicon"/>-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_marginTop="165dp"-->
+    <!--android:src="@drawable/satcharitrapagebaba"-->
+    <!--app:civ_border_color="#EEEEEE"-->
+    <!--app:civ_border_width="4dp"-->
+    <!--android:id="@+id/saibabaicon"/>-->
 
     <Button
         android:layout_width="50dp"
@@ -90,13 +90,28 @@
 
 
     <!--<Button-->
-        <!--android:layout_width="50dp"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:layout_below="@+id/fastfrwrdplay"-->
-        <!--android:layout_toRightOf="@+id/fastfrwrdplay"-->
-        <!--android:layout_marginLeft="10dp"-->
-        <!--android:background="@drawable/audio_download_button"-->
-        <!--android:layout_marginTop="30dp"/>-->
+    <!--android:layout_width="50dp"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:layout_below="@+id/fastfrwrdplay"-->
+    <!--android:layout_toRightOf="@+id/fastfrwrdplay"-->
+    <!--android:layout_marginLeft="10dp"-->
+    <!--android:background="@drawable/audio_download_button"-->
+    <!--android:layout_marginTop="30dp"/>-->
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Saibaba Aarati Lyrics"
+        android:layout_below="@+id/fastfrwrdplay"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/bluetextview"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        android:id="@+id/getlyrics"/>
 
 
     <SeekBar
@@ -120,10 +135,31 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="12:12"
+        android:text="/"
         android:layout_below="@+id/seekbar1"
         android:layout_toRightOf="@+id/starttime"
-        android:layout_marginLeft="250dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
-        android:id="@+id/stoptime"/>
+        android:id="@+id/separator"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0:00"
+        android:layout_below="@+id/seekbar1"
+        android:layout_toRightOf="@+id/separator"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/endtime"/>
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="12:12"-->
+    <!--android:layout_below="@+id/seekbar1"-->
+    <!--android:layout_toRightOf="@+id/starttime"-->
+    <!--android:layout_marginLeft="250dp"-->
+    <!--android:layout_marginTop="5dp"-->
+    <!--android:id="@+id/stoptime"/>-->
+
 </RelativeLayout>

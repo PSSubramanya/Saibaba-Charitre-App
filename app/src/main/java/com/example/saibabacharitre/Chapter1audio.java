@@ -27,7 +27,7 @@ public class Chapter1audio extends AppCompatActivity {
 
     private SeekBar seekbar1;
     private Button btnplay,fastfrwrdplay, fastrewindplay;
-    private TextView saibabachapter1textname, starttime, stoptime;
+    private TextView saibabachapter1textname, starttime, stoptime, endtime, getlyrics;
     private MediaPlayer mediaPlayer;
     private Runnable runnable;
     private Handler handler;
@@ -38,6 +38,7 @@ public class Chapter1audio extends AppCompatActivity {
 
     Dialog dialog;
     Dialog dialog1;
+    Dialog dialog2;
 
 
 
@@ -45,6 +46,11 @@ public class Chapter1audio extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter1audio);
+
+
+//        dialog2 = new Dialog(getApplicationContext());
+//        dialog2.setContentView(R.layout.activity_dialog_lyrics);
+//        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
 
         dialog = new Dialog(getApplicationContext());
@@ -61,7 +67,9 @@ public class Chapter1audio extends AppCompatActivity {
 
         saibabachapter1textname = (TextView) findViewById(R.id.saibabachapter1textname);
         starttime = (TextView) findViewById(R.id.starttime);
-        stoptime = (TextView) findViewById(R.id.stoptime);
+        endtime = (TextView)findViewById(R.id.endtime);
+        getlyrics = (TextView)findViewById(R.id.getlyrics);
+//        stoptime = (TextView) findViewById(R.id.stoptime);
 
         handler = new Handler();
         seekbar1 = findViewById(R.id.seekbar1);
@@ -165,10 +173,10 @@ public class Chapter1audio extends AppCompatActivity {
 
 
 
-
+//string for setting stop time
         String total = createTimeLabel(mediaPlayer.getDuration());
-        stoptime.setText(total);
-
+//        stoptime.setText(total);
+//string for setting stop time
 
 
 
@@ -179,6 +187,17 @@ public class Chapter1audio extends AppCompatActivity {
 //
 //        starttime.setText(currentPosition);
 //        stoptime.setText(total);
+
+
+        getlyrics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog2 = new Dialog(Chapter1audio.this);
+                dialog2.setContentView(R.layout.aarati_lyrics_dialog);
+                dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog2.show();
+            }
+        });
 
 
         fastfrwrdplay.setOnClickListener(new View.OnClickListener() {
@@ -230,12 +249,28 @@ public class Chapter1audio extends AppCompatActivity {
                     if (initialstage)
                     {
 
+
                         if (getItem.equals("0"))
+                        {
+                            new Player().execute("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/aarati_saibaba_song.mp3?alt=media&token=0189cbb3-c176-48a8-839f-adc19fc0ae25");
+                            saibabachapter1textname.setText("Saibaba Aarati Song");
+                            getlyrics.setVisibility(View.VISIBLE);
+                            endtime.setText("4:02");
+//                            String total = createTimeLabel(mediaPlayer.getDuration());
+//                            stoptime.setText(total);
+                        }
+
+                        if (getItem.equals("1"))
                         {
                             new Player().execute("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed");
                             saibabachapter1textname.setText("Sai Charitre - Chapter 1");
                             String total = createTimeLabel(mediaPlayer.getDuration());
-                            stoptime.setText(total);
+                            endtime.setText("8:45");
+
+//                            getlyrics.setVisibility(View.VISIBLE);
+//                            stoptime.setText(total);
+
+
 //                            int length = mediaPlayer.getDuration(); // duration in time in millis
 ////                            String durationText = DateUtils.formatElapsedTime(length / 1000);
 //
@@ -252,18 +287,20 @@ public class Chapter1audio extends AppCompatActivity {
 //                            stoptime.setText(timeLabel);
                         }
 
-                        if (getItem.equals("1"))
+                        if (getItem.equals("2"))
                         {
                             new Player().execute("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_two.mp3?alt=media&token=0da9fc93-69ca-48c7-b141-79b673ab972e");
                             saibabachapter1textname.setText("Sai Charitre - Chapter 2");
+                            endtime.setText("16:51");
 //                            String total = createTimeLabel(mediaPlayer.getDuration());
 //                            stoptime.setText(total);
                         }
 
-                        if (getItem.equals("2"))
+                        if (getItem.equals("3"))
                         {
                             new Player().execute("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_three.mp3?alt=media&token=73d07986-ff5d-4ad1-b19b-f7f07a6c16b1");
                             saibabachapter1textname.setText("Sai Charitre - Chapter 3");
+                            endtime.setText("15:40");
 //                            String total = createTimeLabel(mediaPlayer.getDuration());
 //                            stoptime.setText(total);
                         }

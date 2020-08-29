@@ -1,55 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".OptionPage/">
 
 
+
+
     <item
-        android:id="@+id/appinfoid"
-        android:title="App Info"
-        android:icon="@drawable/infobutton"
+        android:id="@+id/liverelayid"
+        android:title="Live Relay from Shiradi"
+        android:icon="@drawable/liverelay"
         app:showAsAction="always">
     </item>
 
 
+
+
     <!--<item-->
-        <!--android:id="@+id/languagechangeid"-->
-        <!--android:title="Language Support"-->
-        <!--android:icon="@drawable/languageicon"-->
+        <!--android:id="@+id/aaratiid"-->
+        <!--android:title="Saibaba Aarati"-->
+        <!--android:icon="@drawable/aarati"-->
         <!--app:showAsAction="always">-->
-
-
-        <!--<menu>-->
-
-
-            <!--<item-->
-                <!--android:id="@+id/kannadaid"-->
-                <!--android:title="Kannada"-->
-                <!--android:icon="@drawable/kannadaicon"-->
-                <!--app:showAsAction="always">-->
-            <!--</item>-->
-
-
-            <!--<item-->
-                <!--android:id="@+id/hindiid"-->
-                <!--android:title="Hindi"-->
-                <!--android:icon="@drawable/hindiicona"-->
-                <!--app:showAsAction="always">-->
-            <!--</item>-->
-
-            <!--<item-->
-                <!--android:id="@+id/englishid"-->
-                <!--android:title="English"-->
-                <!--android:icon="@drawable/englishicon"-->
-                <!--app:showAsAction="always">-->
-            <!--</item>-->
-
-
-
-        <!--</menu>-->
-
     <!--</item>-->
 
 
+
+    <item
+        android:id="@+id/appinfoid"
+        android:title="About App"
+        android:icon="@drawable/infobutton"
+        app:showAsAction="always">
+    </item>
 </menu>
+
+
+
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<menu xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--tools:context=".OptionPage/">-->
+
+
+    <!--<item-->
+        <!--android:id="@+id/liverelayid"-->
+        <!--android:title="Live Relay from Shiradi"-->
+        <!--android:icon="@drawable/liverelay"-->
+        <!--app:showAsAction="always">-->
+    <!--</item>-->
+
+    <!--<item-->
+        <!--android:id="@+id/aaratiid"-->
+        <!--android:title="Saibaba Aarati"-->
+        <!--android:icon="@drawable/aarati"-->
+        <!--app:showAsAction="always">-->
+    <!--</item>-->
+
+    <!--<item-->
+        <!--android:id="@+id/appinfoid"-->
+        <!--android:title="App Info"-->
+        <!--android:icon="@drawable/infobutton"-->
+        <!--app:showAsAction="always">-->
+    <!--</item>-->
+
+
+    <!--&lt;!&ndash;<item&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/languagechangeid"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:title="Language Support"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:icon="@drawable/languageicon"&ndash;&gt;-->
+        <!--&lt;!&ndash;app:showAsAction="always">&ndash;&gt;-->
+
+
+        <!--&lt;!&ndash;<menu>&ndash;&gt;-->
+
+
+            <!--&lt;!&ndash;<item&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/kannadaid"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:title="Kannada"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:icon="@drawable/kannadaicon"&ndash;&gt;-->
+                <!--&lt;!&ndash;app:showAsAction="always">&ndash;&gt;-->
+            <!--&lt;!&ndash;</item>&ndash;&gt;-->
+
+
+            <!--&lt;!&ndash;<item&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/hindiid"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:title="Hindi"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:icon="@drawable/hindiicona"&ndash;&gt;-->
+                <!--&lt;!&ndash;app:showAsAction="always">&ndash;&gt;-->
+            <!--&lt;!&ndash;</item>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<item&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/englishid"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:title="English"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:icon="@drawable/englishicon"&ndash;&gt;-->
+                <!--&lt;!&ndash;app:showAsAction="always">&ndash;&gt;-->
+            <!--&lt;!&ndash;</item>&ndash;&gt;-->
+
+
+
+        <!--&lt;!&ndash;</menu>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;</item>&ndash;&gt;-->
+
+
+<!--</menu>-->

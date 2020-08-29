@@ -5,18 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkInfo;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,15 +36,25 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AudioCharitre extends AppCompatActivity {
+public class AudioCharitre extends AppCompatActivity
+{
 
 
+    private static final int PERMISSION_STORAGE_CODE = 1000;
     private RecyclerView myrecyclerView1;
 
     Context context1;
@@ -47,13 +64,16 @@ public class AudioCharitre extends AppCompatActivity {
 
     private ListView AudiolistView;
 
+    private DownloadManager downloadManager;
 
-    String[] mChapternumbera = {"Chapter 1","Chapter 2","Chapter 3","Chapter 4","Chapter 5",
+    private ProgressBar progressbaraudiodownload;
+
+    String[] mChapternumbera = {"Aarati Song","Chapter 1","Chapter 2","Chapter 3","Chapter 4","Chapter 5",
             "Chapter 6","Chapter 7","Chapter 8","Chapter 9","Chapter 10",
             "Chapter 11","Chapter 12"};
 
 
-    String[] mChapternamea = {"The wondrous Saint grinding wheat - Obeisances - The story of grinding wheat and its philosophical significance",
+    String[] mChapternamea = {"This is Saibaba Aarati song that is daily sung in Shieadi while worshipping Sadguru Saibaba","The wondrous Saint grinding wheat - Obeisances - The story of grinding wheat and its philosophical significance",
             "Object of writing the work - Incapacity and boldness in the undertaking - Hot discussion - Conferring significant and prophetic title of 'Hemadpant' - Necessity of a Guru",
             "Sai Baba's sanction and promise - Assignment of work to the devotees - Baba's stories as beacon-light - His motherly love - Rohila's story - His sweet and nectar like words",
             "Mission of the saints - Shirdi a Holy Tirth - Personality of Sai Baba - Dictum of Goulibua - Appearance of Vitthal - Kshirsagar's story - Das Ganu's bath in Prayag - Immaculate conception of Sai Baba and His first advent in Shirdi - Three Wadas",
@@ -74,10 +94,7 @@ public class AudioCharitre extends AppCompatActivity {
 
     private Button downloadservicebtn, cancelbtndialog, cancelbtndialog2;
 
-    //            dialog = new Dialog(Chapter1audio.this);
-    //            dialog.setContentView(R.layout.download_dialog);
-    //            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-    //            dialog.show();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,169 +103,27 @@ public class AudioCharitre extends AppCompatActivity {
 
 
 
-//        if (haveNetwork())
-//        {
-//
-//        }
-//        else if (!haveNetwork())
-//        {
-//            Toast.makeText(context1, "No Network", Toast.LENGTH_SHORT).show();
-//        }
-
-//        final Animation animation = AnimationUtils.loadAnimation(AudioCharitre.this,R.anim.slidedown);
-
-
         AudiolistView = (ListView)findViewById(R.id.charitreaudioListViewa); // Listview started
-//        audiodownloadbtn = (ImageView)findViewById(R.id.audiodownloadbtn);
 
+        downloadManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
 
-//        MyAdapter mAdapter = new MyAdapter(this,mChapternumber,mChaptername);
         AudioCharitre.MyAdaptera mAdapterb = new AudioCharitre.MyAdaptera(this,mChapternumbera,mChapternamea);
 
         AudiolistView.setAdapter(mAdapterb);
 
-//        audiodownloadbtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                dialog = new Dialog(AudioCharitre.this);
-//                dialog.setContentView(R.layout.download_dialog);
-//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                dialog.show();
-//            }
-//        });
-
-
-
-//        audiodownloadbtn = findViewById(R.id.audiodownloadbtn);
 
         if (haveNetwork())
         {
-//            audiodownloadbtn = findViewById(R.id.audiodownloadbtn);
 
-//            audiodownloadbtn.setOnClickListener(new View.OnClickListener()
-//            {
-//                @Override
-//                public void onClick(View view) {
-//
-//                    dialog = new Dialog(AudioCharitre.this);
-//                    dialog.setContentView(R.layout.download_dialog);
-//                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                    dialog.show();
-//
-//                    if (dialog.isShowing())
-//                    {
-//                        downloadservicebtn = dialog.findViewById(R.id.downloadservicebtn);
-//                        cancelbtndialog = dialog.findViewById(R.id.cancelbtndialog);
-//
-//
-//                        downloadservicebtn.setOnClickListener(new View.OnClickListener() {
-//                            @SuppressLint("ResourceType")
-//                            @Override
-//                            public void onClick(View view) {
-//                                dialog.dismiss();
-//                                dialog1 = new Dialog(AudioCharitre.this);
-//                                dialog1.setContentView(R.layout.downloading_dialog);
-//                                dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                                dialog1.show();
-//
-//                                downloadingicondialog = view.findViewById(R.id.downloadingicondialog);
-//
-//                            }
-//                        });
-//                    }
-//                }
-//            });
+
+
 
             AudiolistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l)
                 {
-//                String item = PDFlistView.getItemAtPosition(i).toString();
 
-
-//                String item = PDFlistView.getItemAtPosition(i).toString();
-//
-//                Intent intent = new Intent(getApplicationContext(),Chapter1.class);
-////                intent.putExtra("pdfFileName",item);
-//                intent.putExtra("pdfFileName",item);
-//                startActivity(intent);
-
-
-
-
-//                if (haveNetwork())
-//                {
-//
-//                }
-//                else if (!haveNetwork())
-//                {
-//                    Toast.makeText(context1, "No Network", Toast.LENGTH_SHORT).show();
-//                }
-
-
-//                "l";
-//                    audiodownloadbtn = view.findViewById(R.id.audiodownloadbtn);
-
-//                audiodownloadbtn.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        dialog = new Dialog(AudioCharitre.this);
-//                        dialog.setContentView(R.layout.download_dialog);
-//                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                        dialog.show();
-//
-//                        if (dialog.isShowing())
-//                        {
-//                            downloadservicebtn = dialog.findViewById(R.id.downloadservicebtn);
-//                            cancelbtndialog = dialog.findViewById(R.id.cancelbtndialog);
-//
-//
-//                            downloadservicebtn.setOnClickListener(new View.OnClickListener() {
-//                                @SuppressLint("ResourceType")
-//                                @Override
-//                                public void onClick(View view) {
-//                                    dialog.dismiss();
-//                                    dialog1 = new Dialog(AudioCharitre.this);
-//                                    dialog1.setContentView(R.layout.downloading_dialog);
-//                                    dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                                    dialog1.show();
-//
-//                                    downloadingicondialog = view.findViewById(R.id.downloadingicondialog);
-//
-////                                    Animation animation = AnimationUtils.loadAnimation(AudioCharitre.this,R.anim.slidedown);
-////                                    downloadingicondialog.startAnimation(animation);
-//
-//
-////                                    IVcon = (ImageView)findViewById(R.id.IVcon);
-////                                    downloadingicondialog.setBackgroundResource(R.anim.slidedown);
-////
-////                                    final AnimationDrawable animcon = (AnimationDrawable)downloadingicondialog.getDrawable();
-////                                    dialog.setCancelable(true);
-////
-////                                    dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-////                                        @Override
-////                                        public void onShow(DialogInterface dialog) {
-////                                            animcon.start();
-////                                        }
-////                                    });
-////                                    dialog.show();
-//
-//
-//
-////                                    for (int i =0; i < 10; i++)
-////                                    {
-////                                        Animation animation = AnimationUtils.loadAnimation(AudioCharitre.this,R.anim.slidedown);
-////
-////                                        downloadingicondialog.startAnimation(animation);
-////                                    }
-//
-//                                }
-//                            });
-//                        }
-//                    }
-//                });
-
-                            String ii = String.valueOf(i);
+                            final String ii = String.valueOf(i);
                             Intent intent = new Intent(getApplicationContext(),Chapter1audio.class);
                             intent.putExtra("audioFileName",ii);
                             startActivity(intent);
@@ -267,46 +142,65 @@ public class AudioCharitre extends AppCompatActivity {
 
                                     if (dialog.isShowing())
                                     {
+//                                        downloadManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
+                                        progressbaraudiodownload = (ProgressBar)dialog.findViewById(R.id.progressbaraudiodownload);
+                                        String urlDownloadLink = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed";
+                                        String downloadAudioPath = "/storage/emulated/0/Download/Saibaba_chapter1.mp3";
 
+
+                                        //check this DownloadFile once
+//                                        DownloadFile downloadAudioFile = new DownloadFile();
+//                                        downloadAudioFile.doInBackground();
+//                                        downloadAudioFile.execute(urlDownloadLink, downloadAudioPath);
+
+
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                                            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                                                    PackageManager.PERMISSION_DENIED){
+                                                String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+                                                requestPermissions(permissions, PERMISSION_STORAGE_CODE);
+
+                                            }
+                                            else {
+//                                                startDownloading(ii);
+                                                startDownloading();
+                                            }
+                                        }
+                                        else {
+//                                            startDownloading(ii);
+                                            startDownloading();
+                                        }
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+
+//                                        Uri uri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed");
+//                                        DownloadManager.Request request = new DownloadManager.Request(uri);
+//                                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+//                                        Long reference = downloadManager.enqueue(request);
                                     }
                                 }
+
+//                                private void startDownloading() {
+//                                }
+
+
+
                             });
-
-
-//                    audiodownloadbtn.setOnClickListener(new View.OnClickListener()
-//                    {
-//                        @Override
-//                        public void onClick(View view) {
-////                            String ii = String.valueOf(i);
-////                            Intent intent = new Intent(getApplicationContext(),Chapter1audio.class);
-////                            intent.putExtra("audioFileName",ii);
-////                            startActivity(intent);
-//                        }
-//                    });
-//                    else if (!haveNetwork())
-//                    {
-//
-//                    }
-
-//                String ii = String.valueOf(i);
-//                Intent intent = new Intent(getApplicationContext(),Chapter1audio.class);
-////              intent.putExtra("pdfFileName",item);
-////              intent.putExtra("pdfFileName",item);
-//                intent.putExtra("audioFileName",ii);
-//                startActivity(intent);
                 }
-            });
 
-//            audiodownloadbtn = (ImageView)findViewById(R.id.audiodownloadbtn);
-//            audiodownloadbtn.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    dialog1 = new Dialog(AudioCharitre.this);
-//                    dialog1.setContentView(R.layout.downloading_dialog);
-//                    dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                    dialog1.show();
+//                private void startDownloading() {
 //                }
-//            });
+            });
         }
 
         else if (!haveNetwork())
@@ -324,24 +218,7 @@ public class AudioCharitre extends AppCompatActivity {
 
                     if (dialog.isShowing())
                     {
-                        downloadservicebtn = dialog.findViewById(R.id.downloadservicebtn);
-                        cancelbtndialog = dialog.findViewById(R.id.cancelbtndialog);
 
-
-                        downloadservicebtn.setOnClickListener(new View.OnClickListener() {
-                            @SuppressLint("ResourceType")
-                            @Override
-                            public void onClick(View view) {
-                                dialog.dismiss();
-                                dialog1 = new Dialog(AudioCharitre.this);
-                                dialog1.setContentView(R.layout.downloading_dialog);
-                                dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                                dialog1.show();
-
-                                downloadingicondialog = view.findViewById(R.id.downloadingicondialog);
-
-                            }
-                        });
                     }
 
                     audiodownloadbtn = view.findViewById(R.id.audiodownloadbtn);
@@ -356,27 +233,21 @@ public class AudioCharitre extends AppCompatActivity {
                             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                             dialog.show();
 
+
+                            //dialog for downloading
                             if (dialog.isShowing())
                             {
-//                                downloadservicebtn = dialog.findViewById(R.id.downloadservicebtn);
-//                                cancelbtndialog = dialog.findViewById(R.id.cancelbtndialog);
-//
-//
-//                                downloadservicebtn.setOnClickListener(new View.OnClickListener() {
-//                                    @SuppressLint("ResourceType")
-//                                    @Override
-//                                    public void onClick(View view) {
-//                                        dialog.dismiss();
-//                                        dialog1 = new Dialog(AudioCharitre.this);
-//                                        dialog1.setContentView(R.layout.downloading_dialog);
-//                                        dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                                        dialog1.show();
-//
-//                                        downloadingicondialog = view.findViewById(R.id.downloadingicondialog);
-//
-//                                    }
-//                                });
+//                                progressbaraudiodownload = (ProgressBar)dialog.findViewById(R.id.progressbaraudiodownload);
+//                                String urlDownloadLink = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed";
+//                                String downloadAudioPath = "/storage/emulated/0/Music/Saibaba_chapter1.mp3";
+//                                DownloadFile downloadAudioFile = new DownloadFile();
+//                                downloadAudioFile.execute(urlDownloadLink, downloadAudioPath);
+
+
+//                                audioText.setText("");
                             }
+
+
                         }
                     });
                 }
@@ -390,6 +261,62 @@ public class AudioCharitre extends AppCompatActivity {
 
     }
 
+//    private void startDownloading(String ii) {
+    private void startDownloading() {
+//        String url = mUrlEt.getText().toString().trim();
+
+//        String url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_three.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed";
+
+//        DownloadManager.Request request;
+        DownloadManager.Request request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_two.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed"));
+
+
+//        if (ii.equals("0"))
+//        {
+//            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed"));
+//            request.setTitle("SaiCaritre Chapter 1");
+//        }
+//
+//        if (ii.equals("1"))
+//        {
+//            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_two.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed"));
+//            request.setTitle("SaiCaritre Chapter 2");
+//        }
+//
+//        if (ii.equals("2"))
+//        {
+//            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_three.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed"));
+//            request.setTitle("SaiCaritre Chapter 3");
+//        }
+
+
+//        DownloadManager.Request request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_three.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed"));
+
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+        request.setTitle("SaiCaritre Chapter 2");
+        request.setDescription("Downloading file...");
+        request.allowScanningByMediaScanner();
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, ""+System.currentTimeMillis());
+
+        DownloadManager manager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
+        manager.enqueue(request);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case PERMISSION_STORAGE_CODE:{
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    startDownloading();
+                }
+                else {
+                    Toast.makeText(this, "Permission denied...!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
 
     class MyAdaptera extends ArrayAdapter<String>
     {
@@ -454,6 +381,283 @@ public class AudioCharitre extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
+
+
+// to download file
+//    private class DownloadFile extends AsyncTask<String, Integer, String> {
+//
+//    @SuppressLint("WrongThread")
+//    @Override
+//    protected String doInBackground(String... url) {
+//        int count;
+//        File file;
+//
+//        for (int i = 0; i < 20; i++) {
+//            try {
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
+////            progressbar.incrementProgressBy(10);
+//            progressbaraudiodownload.incrementProgressBy(10);
+//        }
+//
+//
+//
+//        //STARTS-> working try... comeback to this if experiment doesn't work
+////        try {
+////
+////            //this is where your download code starts
+////            //URL urls = new URL("url of your .mp3 file");
+////
+////            URL urls = new URL("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed");
+////            URLConnection conexion = urls.openConnection();
+////            conexion.connect();
+////
+////
+////            int lengthOfFile = conexion.getContentLength();
+////
+////
+////
+////
+////            // This code is written above when dialogue opens
+//////            downloadManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
+//////            Uri uri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed");
+//////            DownloadManager.Request request = new DownloadManager.Request(uri);
+//////            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+//////            Long reference = downloadManager.enqueue(request);
+////
+////
+////
+////
+////            // this will be useful so that you can show a tipical 0-100% progress bar
+////            int lenghtOfFile = conexion.getContentLength();
+////
+////            // downlod the file
+////            InputStream input = new BufferedInputStream(urls.openStream());
+//////            OutputStream output = new FileOutputStream("/sdcard/somewhere/nameofthefile.mp3");
+//////            OutputStream output = new FileOutputStream("/storage/emulated/0/DCIM/Camera/Saibaba_chapter1.mp3");
+////
+//////            OutputStream output = new FileOutputStream("/storage/emulated/0/Download/Saibaba_chapter1.mp3");
+////            OutputStream output = new FileOutputStream("/sdcard/Saibaba_chapter1.mp3");
+////
+////            byte data[] = new byte[1024];
+////
+////            long total = 0;
+////
+////            while ((count = input.read(data)) != -1) {
+////                total += count;
+////                // publishing the progress....
+////                publishProgress((int)(total*100/lenghtOfFile));
+////                output.write(data, 0, count);
+////            }
+////
+////            output.flush();
+////            output.close();
+////            input.close();
+////
+////
+////
+////        } catch (Exception e) {
+////        }
+////        return null;
+//
+//        //STOPS-> working try... comeback to this if experiment doesn't work 1st set of code
+//
+//
+//
+//        //STARTS-> working try... comeback to this if experiment doesn't work 2nd set of codes
+//
+//
+////        try {
+//////            URL urls = new URL(fileUrl);
+////            URL urls = new URL("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed");
+////            URLConnection conection = urls.openConnection();
+////            conection.connect();
+////
+////            int lenghtOfFile = conection.getContentLength();
+////
+////            InputStream input = conection.getInputStream();
+////
+//////            File SDCardRoot = Environment.getExternalStorageDirectory();
+////            File SDCardRoot = Environment.getRootDirectory();
+////            File folder = new File(SDCardRoot, "/storage/emulated/0/Download");
+////            if (!folder.exists())
+////                folder.mkdir();
+////            file = new File(folder, "Saibaba_chapter1.mp3");
+////            OutputStream output = new FileOutputStream(file);
+////
+////            byte data[] = new byte[1024];
+////
+////            long total = 0;
+////
+////            while ((count = input.read(data)) != -1) {
+////                total += count;
+//////                publishProgress("" + (int) ((total * 100) / lenghtOfFile));
+////                output.write(data, 0, count);
+////            }
+////
+////            output.flush();
+////            output.close();
+////            input.close();
+////
+////        }
+////        catch (Exception e)
+////        {
+////            return null;
+////        }
+//////        return file;
+////
+////        return String.valueOf(file);
+//
+//
+//        //STARTS-> working try... comeback to this if experiment doesn't work 2nd set of codes
+//
+//
+//
+//
+//
+//
+//
+//    }
+
+
+
+
+
+//    @Override
+//    protected void onPreExecute() {
+//        super.onPreExecute();
+////        showProgressDialog();
+//        progressbaraudiodownload.setProgress(0);
+//        progressbaraudiodownload.setMax(100);
+//        int progressbarstatus = 0;
+//        progressbaraudiodownload.setVisibility(ProgressBar.VISIBLE);
+//    }
+//
+//    @Override
+//    protected void onPostExecute(String s) {
+//        super.onPostExecute(s);
+//        progressbaraudiodownload.setVisibility(ProgressBar.GONE);
+//    }
+
+
+
+
+
+
+
+
+//    @Override
+//    protected void onProgressUpdate(String... values) {
+//
+//        super.onProgressUpdate(values);
+//    }
+
+
+
+//}
+// to download file
+
+
+
+//The code to download part 2 begins
+
+
+    private class DownloadFile extends AsyncTask<Void, String, File> {
+
+        /**
+         * Before starting background thread Show Progress Bar Dialog
+         * */
+
+
+
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//            showProgressDialog();
+//        }
+
+        /**
+         * Downloading file in background thread
+         * */
+        @Override
+        protected File doInBackground(Void... params) {
+            int count;
+            File file;
+            try {
+                URL url = new URL("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed");
+                URLConnection conection = url.openConnection();
+                conection.connect();
+
+                int lenghtOfFile = conection.getContentLength();
+
+                InputStream input = conection.getInputStream();
+
+                File SDCardRoot = Environment.getExternalStorageDirectory();
+
+                File folder = new File(SDCardRoot, "/storage/emulated/0/Download");
+                if (!folder.exists())
+                    folder.mkdir();
+                file = new File(folder, "Saibaba_chapter1.mp3");
+
+                OutputStream output = new FileOutputStream(file);
+
+                byte data[] = new byte[1024];
+
+                long total = 0;
+
+                while ((count = input.read(data)) != -1) {
+                    total += count;
+
+                    publishProgress("" + (int) ((total * 100) / lenghtOfFile));
+
+                    output.write(data, 0, count);
+                }
+
+                output.flush();
+
+                output.close();
+                input.close();
+
+            } catch (Exception e) {
+                return null;
+            }
+            return file;
+        }
+
+        /**
+         * Updating progress bar
+         * */
+        protected void onProgressUpdate(String... progress) {
+            // setting progress percentage
+            progressbaraudiodownload.setProgress(Integer.parseInt(progress[0]));
+        }
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
+
+
+//        @Override
+//        protected void onPostExecute(File file) {
+//            // dismiss the dialog after the file was downloaded
+//            dismissProgressDialog();
+//        }
+
+    }
+
+
+
+
+
+
+
 
 
     private boolean haveNetwork()

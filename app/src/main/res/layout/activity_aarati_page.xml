@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Chapter1audio">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/saibabaimagee"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/aaratisaibabaaudioicon"
+        app:civ_border_color="#EEEEEE"
+        app:civ_border_width="4dp"
+        android:layout_marginTop="30dp"/>
+
+
+    <!--<ProgressBar-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="250dp"-->
+    <!--android:id="@+id/progressBar"-->
+    <!--style="?android:attr/progressBarStyleHorizontal"-->
+    <!--android:background="@drawable/circular_shape"-->
+    <!--android:indeterminate="false"-->
+    <!--android:max="100"-->
+    <!--android:progress="35"-->
+    <!--android:progressDrawable="@drawable/circular_customized_progressbar"/>-->
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saibaba Aarati Song"
+        android:textColor="@color/bluetextview"
+        android:layout_below="@+id/aaratisaibabaaudioicon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/aaratisaibabachapter1textname"/>
+
+    <!--<de.hdodenhof.circleimageview.CircleImageView-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_marginTop="165dp"-->
+    <!--android:src="@drawable/satcharitrapagebaba"-->
+    <!--app:civ_border_color="#EEEEEE"-->
+    <!--app:civ_border_width="4dp"-->
+    <!--android:id="@+id/saibabaicon"/>-->
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/audioplay"
+        android:layout_below="@+id/aaratisaibabaaudioicon"
+        android:id="@+id/aaratibtnplay"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110dp"
+        android:textSize="20dp"/>
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/audiorewind"
+        android:layout_below="@+id/aaratisaibabaaudioicon"
+        android:layout_toLeftOf="@+id/aaratibtnplay"
+        android:layout_marginRight="40dp"
+        android:id="@+id/aaratifastrewindplay"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110dp"
+        android:textSize="20dp"/>
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/audiofrwrd"
+        android:layout_below="@+id/aaratisaibabaaudioicon"
+        android:layout_toRightOf="@+id/aaratibtnplay"
+        android:layout_marginLeft="40dp"
+        android:id="@+id/aaratifastfrwrdplay"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110dp"
+        android:textSize="20dp"/>
+
+
+    <!--<View-->
+        <!--android:id="@+id/aarativiewline"-->
+        <!--android:layout_below="@+id/aaratifastfrwrdplay"-->
+        <!--android:layout_width="320dp"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:layout_height="0.5dp"-->
+        <!--android:background="#000000" />-->
+
+
+    <ScrollView
+        android:layout_width="320dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/aaratifastfrwrdplay">
+        <TextView
+            android:layout_width="320dp"
+            android:layout_height="160dp"
+            android:layout_below="@+id/aaratifastfrwrdplay"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:gravity="center_horizontal"
+            android:fontFamily="@font/fu"
+            android:text="Aarati Sai Baba...
+\nSaukhyadatara Jiva, charanarajatali
+\nDyava dasa visava, bhakta visava
+\nAarati Sai Baba...
+\nJaluniya ananga
+\nSasvarupi rahe danga
+\nMumuksha janan davi.
+\nNija dola Shriranga, dola Shriranga
+\nAarati Sai Baba...
+\nJaya mani jaisa bhava
+\nTayataisa anubhava
+\nDavisi dayaghana,
+\nAisi tuzi he mava, tuzi he mava
+\nAarati Sai Baba...
+\nTumache nama dhyata
+\nHare Sansruthivyatha
+\nAgadha Tava karani
+\nMarga davisi anatha, davisi anatha
+\nAarati Sai Baba...
+\nKaliyuga avatara,
+\nSaguna Brahma sachara
+\nAvatirna zalase
+\nSwami Dutta Digambara, Dutta Digambara.
+\nAarati Sai Baba...
+\nAthan Divasa Gurvari
+\nBhakta kariti vari
+\nPrabhupada Pahavaya
+\nBhava Bhayanivari, bhayanivari.
+\nAarati Sai Baba...
+\nMaza nijadravya theva,
+\nThava charana raja seva
+\nMaghane hechi aata,
+\nTumhan devadideva, devadideva.
+\nAarati Sai Baba...
+\nIchita Dina chatak
+\nNirmala toya nijasukha
+\nPajaven Madhava Ya
+\nSambhala apuli bhaka, apuli bhaka.
+\nAarati Sai Baba..."
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"/>
+    </ScrollView>
+
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/aaratiseekbar1"
+        android:layout_below="@+id/aaratisaibabachapter1textname"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0:00"
+        android:layout_below="@+id/aaratiseekbar1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/aaratistarttime"/>
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="12:12"-->
+    <!--android:layout_below="@+id/seekbar1"-->
+    <!--android:layout_toRightOf="@+id/starttime"-->
+    <!--android:layout_marginLeft="250dp"-->
+    <!--android:layout_marginTop="5dp"-->
+    <!--android:id="@+id/stoptime"/>-->
+
+</RelativeLayout>

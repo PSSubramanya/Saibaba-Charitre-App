@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="135dp"
+            android:layout_marginTop="150dp"
             android:text="Saibaba Chapter number"
             android:layout_gravity="center"
             android:paddingLeft="10dp"
@@ -41,6 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="45dp"
+            android:layout_marginBottom="10dp"
             android:text="Download this audio file for offline service"
             android:layout_gravity="center"
             android:paddingLeft="10dp"
@@ -51,41 +52,54 @@
             android:textSize="15dp"/>
 
 
-        <Button
-            android:id="@+id/downloadservicebtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/greendownload"
-            android:textColor="@color/colorWhite"
-            android:textStyle="bold"
-            android:textSize="11dp"
-            android:paddingLeft="120dp"
-            android:paddingRight="115dp"
-            android:text="Download" />
+        <!--<Button-->
+            <!--android:id="@+id/downloadservicebtn"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="@color/greendownload"-->
+            <!--android:textColor="@color/colorWhite"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textSize="11dp"-->
+            <!--android:paddingLeft="120dp"-->
+            <!--android:paddingRight="115dp"-->
+            <!--android:text="Download" />-->
 
 
         <Button
             android:id="@+id/cancelbtndialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
+            android:background="@color/greendownload"
             android:paddingLeft="120dp"
             android:paddingRight="115dp"
-            android:text="Cancel"
+            android:text="OK"
             android:textSize="11dp"
-            android:textColor="@color/darkgrey"/>
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"/>
 
 
     </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="You are offline"
+        android:textSize="15dp"
+        android:fontFamily="@font/fc"/>
 
     <ImageView
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:src="@drawable/ic_audiofiledownloadb"
         android:padding="10dp"
+        android:layout_marginTop="35dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
+        android:textColor="@color/darkgrey"
         android:id="@+id/downloadicondialog"/>
 
 </RelativeLayout>
