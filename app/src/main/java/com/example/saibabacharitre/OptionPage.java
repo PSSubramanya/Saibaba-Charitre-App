@@ -144,7 +144,8 @@ public class OptionPage extends AppCompatActivity {
         {
             Toast.makeText(OptionPage.this, "Live Relay from Shiradi", Toast.LENGTH_LONG).show();
 //            Intent intent = new Intent(OptionPage.this,SaiDarshanaPage.class);
-            Intent intent = new Intent(OptionPage.this,TestVideoStreamPage.class);
+            Intent intent = new Intent(OptionPage.this,TestVideoStreamPage.class);//semi-working
+//            Intent intent = new Intent(OptionPage.this,OnlineLiveVideoStream.class);//exp
 //            Intent intent = new Intent(OptionPage.this,ShirdiLiveDarshana.class);
             startActivity(intent);
 

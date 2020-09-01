@@ -14,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".OnlineLiveVideoStream"></activity>
         <activity android:name=".ShirdiLiveDarshana" />
         <activity android:name=".VideoStreaming2" />
         <activity android:name=".TestVideoStreamPage" />

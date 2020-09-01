@@ -98,6 +98,16 @@
         <!--android:layout_centerHorizontal="true"-->
         <!--android:src="@drawable/vintagewinxca"/>-->
 
+    <!--<ImageView-->
+        <!--android:layout_width="120dp"-->
+        <!--android:layout_height="120dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_below="@id/abouttheappinfo"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:id="@+id/hanumanicon"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:src="@drawable/hanumanicon"/>-->
+
 
 
 
