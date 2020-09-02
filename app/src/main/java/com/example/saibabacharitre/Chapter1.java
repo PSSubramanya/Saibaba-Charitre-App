@@ -89,5 +89,25 @@ public class Chapter1 extends AppCompatActivity {
         {
             pdfchapter1.fromAsset("sai_chapter 8.pdf").load();
         }
+
+        if (getItem.equals("8"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 9.pdf").load();
+        }
+
+        if (getItem.equals("9"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 10.pdf").load();
+        }
+
+        if (getItem.equals("10"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 11.pdf").load();
+        }
+
+        if (getItem.equals("11"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 12.pdf").load();
+        }
     }
 }

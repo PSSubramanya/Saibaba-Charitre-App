@@ -305,6 +305,51 @@ public class Chapter1audio extends AppCompatActivity {
 //                            stoptime.setText(total);
                         }
 
+                        if (getItem.equals("4"))
+                        {
+                            new Player().execute("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_four.mp3.mp3?alt=media&token=895335d1-0983-438d-a73a-0cf3bf986575");
+                            saibabachapter1textname.setText("Sai Charitre - Chapter 4");
+                            endtime.setText("23:52");
+//                            String total = createTimeLabel(mediaPlayer.getDuration());
+//                            stoptime.setText(total);
+                        }
+
+                        if (getItem.equals("5"))
+                        {
+                            new Player().execute("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_five.mp3.mp3?alt=media&token=d1a155c6-8463-4127-981e-d98bc2e11368");
+                            saibabachapter1textname.setText("Sai Charitre - Chapter 5");
+                            endtime.setText("48:40");
+//                            String total = createTimeLabel(mediaPlayer.getDuration());
+//                            stoptime.setText(total);
+                        }
+
+                        if (getItem.equals("6"))
+                        {
+                            new Player().execute("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_six.mp3.mp3?alt=media&token=cc2d0be4-9418-470f-a229-9112f04c7379");
+                            saibabachapter1textname.setText("Sai Charitre - Chapter 6");
+                            endtime.setText("21:49");
+//                            String total = createTimeLabel(mediaPlayer.getDuration());
+//                            stoptime.setText(total);
+                        }
+
+                        if (getItem.equals("7"))
+                        {
+                            new Player().execute("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_seven.mp3.mp3?alt=media&token=22dca863-c0f3-4392-8f57-d82051dab6bf");
+                            saibabachapter1textname.setText("Sai Charitre - Chapter 7");
+                            endtime.setText("18:56");
+//                            String total = createTimeLabel(mediaPlayer.getDuration());
+//                            stoptime.setText(total);
+                        }
+
+                        if (getItem.equals("8"))
+                        {
+                            new Player().execute("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_eight.mp3.mp3?alt=media&token=61c764ff-0467-43db-b953-5925cd8ef727");
+                            saibabachapter1textname.setText("Sai Charitre - Chapter 8");
+                            endtime.setText("13.:55");
+//                            String total = createTimeLabel(mediaPlayer.getDuration());
+//                            stoptime.setText(total);
+                        }
+
 
 //                        new Player().execute("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed");
                     }

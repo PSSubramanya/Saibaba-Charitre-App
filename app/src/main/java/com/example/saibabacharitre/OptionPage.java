@@ -146,6 +146,7 @@ public class OptionPage extends AppCompatActivity {
 //            Intent intent = new Intent(OptionPage.this,SaiDarshanaPage.class);
             Intent intent = new Intent(OptionPage.this,TestVideoStreamPage.class);//semi-working
 //            Intent intent = new Intent(OptionPage.this,OnlineLiveVideoStream.class);//exp
+//            Intent intent = new Intent(OptionPage.this,WebViewPage.class);//webviewpage
 //            Intent intent = new Intent(OptionPage.this,ShirdiLiveDarshana.class);
             startActivity(intent);
 
