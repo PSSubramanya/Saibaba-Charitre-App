@@ -109,5 +109,100 @@ public class Chapter1 extends AppCompatActivity {
         {
             pdfchapter1.fromAsset("sai_chapter 12.pdf").load();
         }
+
+        if (getItem.equals("12"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 13.pdf").load();
+        }
+
+        if (getItem.equals("13"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 14.pdf").load();
+        }
+
+        if (getItem.equals("14"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 15.pdf").load();
+        }
+
+        if (getItem.equals("15"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 16 and 17.pdf").load();
+        }
+
+        if (getItem.equals("16"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 18 and 19.pdf").load();
+        }
+
+        if (getItem.equals("17"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 20.pdf").load();
+        }
+
+        if (getItem.equals("18"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 21.pdf").load();
+        }
+
+        if (getItem.equals("19"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 22.pdf").load();
+        }
+
+        if (getItem.equals("20"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 23.pdf").load();
+        }
+
+        if (getItem.equals("21"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 24.pdf").load();
+        }
+
+        if (getItem.equals("22"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 25.pdf").load();
+        }
+
+        if (getItem.equals("23"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 26.pdf").load();
+        }
+
+        if (getItem.equals("24"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 27.pdf").load();
+        }
+
+        if (getItem.equals("25"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 28.pdf").load();
+        }
+
+        if (getItem.equals("26"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 29.pdf").load();
+        }
+
+        if (getItem.equals("27"))
+        {
+            pdfchapter1.fromAsset("sai_chapter 30.pdf").load();
+        }
+
+//        if (getItem.equals("28"))
+//        {
+//            pdfchapter1.fromAsset("sai_chapter 31.pdf").load();
+//        }
+
+//        if (getItem.equals("29"))
+//        {
+//            pdfchapter1.fromAsset("sai_chapter 31.pdf").load();
+//        }
+//
+//        if (getItem.equals("30"))
+//        {
+//            pdfchapter1.fromAsset("sai_chapter 32.pdf").load();
+//        }
     }
 }
