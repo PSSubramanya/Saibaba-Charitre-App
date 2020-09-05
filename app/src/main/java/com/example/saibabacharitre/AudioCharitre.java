@@ -70,7 +70,8 @@ public class AudioCharitre extends AppCompatActivity
 
     String[] mChapternumbera = {"Aarati Song","Chapter 1","Chapter 2","Chapter 3","Chapter 4","Chapter 5",
             "Chapter 6","Chapter 7","Chapter 8","Chapter 9","Chapter 10",
-            "Chapter 11","Chapter 12"};
+            "Chapter 11","Chapter 12","Chapter 13","Chapter 14","Chapter 15","Chapter 16-17","Chapter 18-19","Chapter 20",
+            "Chapter 21", "Chapter 22", "Chapter 23", "Chapter 24", "Chapter 25", "Chapter 26", "Chapter 27", "Chapter 28", "Chapter 29", "Chapter 30"};
 
 
     String[] mChapternamea = {"This is Saibaba Aarati song that is daily sung in Shieadi while worshipping Sadguru Saibaba","The wondrous Saint grinding wheat - Obeisances - The story of grinding wheat and its philosophical significance",
@@ -84,7 +85,24 @@ public class AudioCharitre extends AppCompatActivity
             "Effect of compliance and non-compliance with Baba's orders at the time of taking leave - A few instances -Mendicancy and its necessity - Devotees' (Tarkhad family's) experiences - Baba fed sumptuously",
             "Sai Baba's mode of life - His sleeping plank - His stay in Shirdi - His teachings - His humility - Nanavali The easiest path",
             "Sai as Sagun Brahma - Dr. Pandit's worship - Haji Siddik Falke - Control over the elements",
-            "Sai Leelas - Experiences of (1) Kaka Mahajani (2) Dhumal Pleader (3) Mrs. Nimonkar (4) Mule Shastri (5) A Doctor "};
+            "Sai Leelas - Experiences of (1) Kaka Mahajani (2) Dhumal Pleader (3) Mrs. Nimonkar (4) Mule Shastri (5) A Doctor ",
+            "More Sai Leelas - Diseases cured (1) Bhimaji Patil (2) Bala Shimpi Bapusaheb Buti (4) Alandi Swami (5) Kaka Mahajani (6) Dattopant of Harda ",
+            "Ratanji Wadia of Nanded - Saint Moulisaheb - Dakshina mimansa ",
+            "Naradiya Kirtan Paddhati - Mr. Cholkar's Sugarless tea - Two Lizards",
+            "Quick Brahma Gnyan",
+            "How Hemadpant was accepted and blessed - Stories of Mr. Sathe and Mrs. Deshmukh - Encouraging good thoughts to fruition - Variety in Upadesh - Teachings regarding slander and remuneration for labour",
+            "Das Ganu's problem solved by Kaka's maid-servant ",
+            "Stories of (1) V.H. Thakur (2) Anantrao Patankar and (3) Pandharpur pleader",
+            "Rescues from serpent-bites (1) Balasahcb Mirikar (2) Bapusaheb Buti(3) Amir Shakkar (4) Hemadpant - Baba's opinion regarding killing of serpents ",
+            "Yoga and onion - Shama cured of snake-bite - Cholera ordinances broken - Ordeal of Guru - bhakti ",
+            "Baba's wit and humour - Chana Leela - (1) Hemadpant (2) Sudama(3) Anna Chinchanikar vs. Maushibai",
+            "Damu Anna Kasar of Ahmednagar (1) Speculations (2) Amraleela ",
+            "Stories of (1) Bhakta Pant (2) Harishchandra Pitale (3) Gopal Ambadekar",
+            "Favour shown by giving Bhagwat and Vishnu Sahastranaam - Dixit's Vitthal vision - Geeta-Rahasya -Khapardes",
+            "Sparrows drawn to Shirdi (1) Lakhshmichand (2) Burhanpore lady(3) Megha",
+            "Stories of (1) Chennai's Bhajani Mela (2) Tendulkars (father and son)(3) Dr. Captain Hate (4) Waman Narvekar",
+            "Drawn to Shirdi (1) Kakaji Vaidya of Vani (2) Ramlal Punjabi of Mumbai ",
+    };
 
 
     Dialog dialog;

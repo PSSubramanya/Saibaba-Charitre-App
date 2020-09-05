@@ -100,47 +100,14 @@ public class BookCharitre extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
             {
-//                String item = PDFlistView.getItemAtPosition(i).toString();
-
-
-//                String item = PDFlistView.getItemAtPosition(i).toString();
-//
-//                Intent intent = new Intent(getApplicationContext(),Chapter1.class);
-////                intent.putExtra("pdfFileName",item);
-//                intent.putExtra("pdfFileName",item);
-//                startActivity(intent);
-
                 String ii = String.valueOf(i);
                 Intent intent = new Intent(getApplicationContext(),Chapter1.class);
-//              intent.putExtra("pdfFileName",item);
 //              intent.putExtra("pdfFileName",item);
                 intent.putExtra("pdfFileName",ii);
                 startActivity(intent);
             }
         });
 
-
-
-
-//        String[] pdfFiles ={"Saibaba chapter1","Saibaba chapter2"};
-
-        //WORKING CODE
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,pdfFiles){
-//            @Override
-//            public View getView(int position, View convertView, ViewGroup parent) {
-//
-//                View view = super.getView(position,convertView,parent);
-//
-//                TextView mytext = (TextView)view.findViewById(android.R.id.text1);
-//
-//                return view;
-//            }
-//        };
-//
-//
-//        PDFlistView.setAdapter(adapter);5
-
-        //WORKING CODE
 
         //WORKING CODE
 
@@ -213,68 +180,6 @@ public class BookCharitre extends AppCompatActivity {
     }
 
 
-
-
-//    class MyAdapter extends ArrayAdapter<String>
-//    {
-//        Context context;
-//        String rChapternumber[];
-////        String rChaptername[];
-//
-//        MyAdapter (Context c, String Chapternumber[])
-//        {
-//            super(c, R.layout.charitre_layout_design,R.id.chapternumber);
-//            this.context = c;
-//            this.rChapternumber = Chapternumber;
-//
-//        }
-//
-//        @Override
-//        public View getView(int position, View convertView, ViewGroup parent) {
-//            LayoutInflater layoutInflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//            View rowview = layoutInflater.inflate(R.layout.charitre_layout_design,parent,false);
-////            ImageView images = rowview.findViewById(R.id.saibabalistviewicon);
-//            TextView myChapternumber = rowview.findViewById(R.id.chapternumber);
-//            TextView myChaptername = rowview.findViewById(R.id.charitrname);
-//
-//
-//            myChapternumber.setText(rChapternumber[position]);
-////            myChaptername.setText(rChaptername[position]);
-//
-//
-////            return super.getView(position, convertView, parent);
-//            return rowview;
-//
-//        }
-//    }
-
-
-//    private void initializeData()
-//    {
-//        lstContact = new ArrayList<>();
-//        lstContact.add(new CharitreContents("Chapter 1","The wondrous Saint grinding wheat - Obeisances - The story of grinding wheat and its philosophical significance "));
-//        lstContact.add(new CharitreContents("Chapter 2","Object of writing the work - Incapacity and boldness in the undertaking - Hot discussion - Conferring significant and prophetic title of 'Hemadpant' - Necessity of a Guru "));
-//        lstContact.add(new CharitreContents("Chapter 3","Sai Baba's sanction and promise - Assignment of work to the devotees - Baba's stories as beacon-light - His motherly love - Rohila's story - His sweet and nectar like words "));
-//        lstContact.add(new CharitreContents("Chapter 4","Mission of the saints - Shirdi a Holy Tirth - Personality of Sai Baba - Dictum of Goulibua - Appearance of Vitthal - Kshirsagar's story - Das Ganu's bath in Prayag - Immaculate conception of Sai Baba and His first advent in Shirdi - Three Wadas"));
-//        lstContact.add(new CharitreContents("Chapter 5","Baba's return with Chand Patil's marriage party -Welcomed and addressed as 'Sai' - Contact with other saints - His attire and daily routine - The story of the Padukas - Wrestling bout with Mohiddin and change in life - Turning water into oil - The Pseudo - Guru Javhar All"));
-//        lstContact.add(new CharitreContents("Chapter 6","Efficacy of the touch of the Guru's hand - Ram Navami Festival - Its origin, transformation etc. - Repairs to the Masjid "));
-//        lstContact.add(new CharitreContents("Chapter 7","Wonderful Incarnation - Behaviour of Sai Baba - His vogic practices - His all-pervasiveness and mercy - Leper devotee's service - Master Khaparde's plague case - Going to Pandharpur"));
-//        lstContact.add(new CharitreContents("Chapter 8","Importance of human birth - Sai Baba begging food - Baijabai’s service - Sai Baba's dormitory - His affection for Khushalchand "));
-//        lstContact.add(new CharitreContents("Chapter 9","Effect of compliance and non-compliance with Baba's orders at the time of taking leave - A few instances -Mendicancy and its necessity - Devotees' (Tarkhad family's) experiences - Baba fed sumptuously"));
-//        lstContact.add(new CharitreContents("Chapter 10","Sai Baba's mode of life - His sleeping plank - His stay in Shirdi - His teachings - His humility - Nanavali The easiest path "));
-//        lstContact.add(new CharitreContents("Chapter 11","Sai as Sagun Brahma - Dr. Pandit's worship - Haji Siddik Falke - Control over the elements "));
-//        lstContact.add(new CharitreContents("Chapter 12","Sai Leelas - Experiences of (1) Kaka Mahajani (2) Dhumal Pleader (3) Mrs. Nimonkar (4) Mule Shastri (5) A Doctor "));
-//    }
-//
-//
-//    private void initializeAdapter()
-//    {
-////        RecyclerViewAdapter adapter = new RecyclerViewAdapter(context,lstContact);
-//        RecyclerViewAdapter adapter = new RecyclerViewAdapter(lstContact);
-//        myrecyclerView.setAdapter(adapter);
-//    }
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //return super.onCreateOptionsMenu(menu);
@@ -294,12 +199,6 @@ public class BookCharitre extends AppCompatActivity {
 //            startActivity(intent);
         }
 
-//        if (id == R.id.appinfoid);
-//        {
-////            Toast.makeText(ChoicePage.this, "Click on the icon to choose!", Toast.LENGTH_LONG).show();
-////            Intent intent = new Intent(OptionPage.this,AboutAppPage.class);
-////            startActivity(intent);
-//        }
 
         return super.onOptionsItemSelected(item);
     }
