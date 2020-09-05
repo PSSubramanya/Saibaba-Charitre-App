@@ -50,6 +50,20 @@
             android:fontFamily="@font/fc"
             android:textSize="15dp"/>
 
+        <TextView
+            android:id="@+id/progressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="0%"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center"
+            android:textColor="@color/darkgrey"
+            android:fontFamily="@font/fc"
+            android:textSize="15dp"/>
+
         <ProgressBar
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -58,6 +72,9 @@
             android:layout_marginRight="20dp"
             style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
             android:id="@+id/progressbaraudiodownload"
+            android:progress="1"
+            android:max="100"
+            android:indeterminate="false"
             android:layout_gravity="center"/>
 
 
