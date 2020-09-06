@@ -79,6 +79,7 @@ public class AudioCharitre extends AppCompatActivity
     private TextView chapternumberdialog2;
 
     int inum = 0;
+    String file_url = "";
 
 
 
@@ -169,51 +170,24 @@ public class AudioCharitre extends AppCompatActivity
                                 @Override
                                 public void onClick(View view) {
 
-                                    dialog = new Dialog(AudioCharitre.this);
-                                    dialog.setContentView(R.layout.downloading_dialog);
-                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                                    dialog.show();
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                                        if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                                                PackageManager.PERMISSION_DENIED){
+                                            String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
+                                            requestPermissions(permissions, PERMISSION_STORAGE_CODE);
 
-
-                                    if (dialog.isShowing())
-                                    {
-
-
-//                                        downloadManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
-                                        progressbaraudiodownload = (ProgressBar)dialog.findViewById(R.id.progressbaraudiodownload);
-                                        progressText = (TextView)dialog.findViewById(R.id.progressText);
-                                        chapternumberdialog2 = (TextView)dialog.findViewById(R.id.chapternumberdialog2);
-
-                                        /*String urlDownloadLink = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed";
-                                        String downloadAudioPath = "/storage/emulated/0/Download/Saibaba_chapter1.mp3";*/
-
-
-                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                                            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-                                                    PackageManager.PERMISSION_DENIED){
-                                                String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-
-                                                requestPermissions(permissions, PERMISSION_STORAGE_CODE);
-
-                                            }
-                                            else {
-                                                startDownloading(inum);
-//                                                startDownloading();
-                                            }
                                         }
                                         else {
                                             startDownloading(inum);
-//                                            startDownloading();
+//                                                startDownloading();
                                         }
                                     }
+                                    else {
+                                        startDownloading(inum);
+//                                            startDownloading();
+                                    }
                                 }
-
-//                                private void startDownloading() {
-//                                }
-
-
-
                             });
                 }
             });
@@ -279,7 +253,7 @@ public class AudioCharitre extends AppCompatActivity
 
     private void startDownloading(int inuma) {
 
-        DownloadManager.Request request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_two.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed"));
+        DownloadManager.Request request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/aarati_saibaba_song.mp3?alt=media&token=0ba95ca5-0d18-4ca8-80f3-c032222dfded"));
 
 //        DownloadManager.Request request;
 
@@ -289,204 +263,199 @@ public class AudioCharitre extends AppCompatActivity
         //TRY BUILDING AN OPTIMIZED WAY OF CHECKING THESE CONDITIONS, PROBABY STORE URLs IN A ITERATIVE STRTUCTURED STRING FORMAT AND USE FOR LOOP INSTEAD OF IF CONDITIONS...
         if (inuma == 0)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/aarati_saibaba_song.mp3?alt=media&token=0189cbb3-c176-48a8-839f-adc19fc0ae25"));
-            request.setTitle("SaiCaritre Aarati Song");
-            chapternumberdialog2.setText("Saibaba Aarati Song");
 
-            //Temporary working progress bar code.....
-//            progressBarInfo();
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/aarati_saibaba_song.mp3?alt=media&token=0189cbb3-c176-48a8-839f-adc19fc0ae25";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/aarati_saibaba_song.mp3?alt=media&token=0ba95ca5-0d18-4ca8-80f3-c032222dfded";
+            request = new DownloadManager.Request(Uri.parse(file_url));
+            request.setTitle("SaiCaritre Aarati Song");
+
+            new DownloadFileFromURL().execute(file_url);
         }
 
         if (inuma == 1)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed"));
-            request.setTitle("SaiCaritre Chapter 1");
-            chapternumberdialog2.setText("Saibaba Chapter number 1");
 
-            //Temporary working progress bar code.....
-//            progressBarInfo();
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=bf7de0ff-4088-46e6-a62a-54fff46fd84f";
+            request = new DownloadManager.Request(Uri.parse(file_url));
+            request.setTitle("SaiCaritre Chapter 1");
+
+            new DownloadFileFromURL().execute(file_url);
         }
 
         if (inuma == 2)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_two.mp3?alt=media&token=0da9fc93-69ca-48c7-b141-79b673ab972e"));
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_two.mp3?alt=media&token=0da9fc93-69ca-48c7-b141-79b673ab972e";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/sri_sai_charitre_chapter_two.mp3?alt=media&token=f52b2204-433e-4113-83aa-847505428e93";
+            request = new DownloadManager.Request(Uri.parse(file_url));
             request.setTitle("SaiCaritre Chapter 2");
-            chapternumberdialog2.setText("Saibaba Chapter number 2");
 
-            //Temporary working progress bar code.....
-//            progressBarInfo();
+            new DownloadFileFromURL().execute(file_url);
         }
 
         if (inuma == 3)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_three.mp3?alt=media&token=73d07986-ff5d-4ad1-b19b-f7f07a6c16b1"));
-            request.setTitle("SaiCaritre Chapter 3");
-            chapternumberdialog2.setText("Saibaba Chapter number 3");
 
-            //Temporary working progress bar code.....
-//            progressBarInfo();
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_three.mp3?alt=media&token=73d07986-ff5d-4ad1-b19b-f7f07a6c16b1";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/sri_sai_charitre_chapter_three.mp3?alt=media&token=9076dd99-6a39-4bf3-83e0-812e900fd045";
+            request = new DownloadManager.Request(Uri.parse(file_url));
+            request.setTitle("SaiCaritre Chapter 3");
+
+            new DownloadFileFromURL().execute(file_url);
         }
 
         if (inuma == 4)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_four.mp3.mp3?alt=media&token=895335d1-0983-438d-a73a-0cf3bf986575"));
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_four.mp3.mp3?alt=media&token=895335d1-0983-438d-a73a-0cf3bf986575";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/sri_sai_charitre_chapter_four.mp3.mp3?alt=media&token=267a4206-3a9d-41f7-a22b-462f4f56e745";
+            request = new DownloadManager.Request(Uri.parse(file_url));
             request.setTitle("SaiCaritre Chapter 4");
-            chapternumberdialog2.setText("Saibaba Chapter number 4");
 
-            String file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_four.mp3.mp3?alt=media&token=895335d1-0983-438d-a73a-0cf3bf986575";
-
-            //Temporary working progress bar code.....
-//            progressBarInfo();
-
+            new DownloadFileFromURL().execute(file_url);
         }
 
         if (inuma == 5)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_five.mp3.mp3?alt=media&token=d1a155c6-8463-4127-981e-d98bc2e11368"));
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_five.mp3.mp3?alt=media&token=d1a155c6-8463-4127-981e-d98bc2e11368";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/sri_sai_charitre_chapter_five.mp3.mp3?alt=media&token=c30b4a48-d98a-47b2-9b5c-6c4c3556dd68";
+            request = new DownloadManager.Request(Uri.parse(file_url));
             request.setTitle("SaiCaritre Chapter 5");
-            chapternumberdialog2.setText("Saibaba Chapter number 5");
 
-            //Temporary working progress bar code.....
-//            progressBarInfo();
+            new DownloadFileFromURL().execute(file_url);
         }
 
         if (inuma == 6)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_six.mp3.mp3?alt=media&token=cc2d0be4-9418-470f-a229-9112f04c7379"));
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_six.mp3.mp3?alt=media&token=cc2d0be4-9418-470f-a229-9112f04c7379";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/sri_sai_charitre_chapter_six.mp3.mp3?alt=media&token=48d74d7c-5cf2-40e1-8157-fa4c66d74943";
+            request = new DownloadManager.Request(Uri.parse(file_url));
             request.setTitle("SaiCaritre Chapter 6");
-            chapternumberdialog2.setText("Saibaba Chapter number 6");
 
-            //Temporary working progress bar code.....
-//            progressBarInfo();
+            new DownloadFileFromURL().execute(file_url);
         }
 
         if (inuma == 7)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_seven.mp3.mp3?alt=media&token=22dca863-c0f3-4392-8f57-d82051dab6bf"));
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_seven.mp3.mp3?alt=media&token=22dca863-c0f3-4392-8f57-d82051dab6bf";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/sri_sai_charitre_chapter_seven.mp3.mp3?alt=media&token=3f8f592b-ce91-46b4-96d7-65e68bc03984";
+            request = new DownloadManager.Request(Uri.parse(file_url));
             request.setTitle("SaiCaritre Chapter 7");
-            chapternumberdialog2.setText("Saibaba Chapter number 7");
 
-            //Temporary working progress bar code.....
-//            progressBarInfo();
+            new DownloadFileFromURL().execute(file_url);
         }
 
         if (inuma == 8)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_eight.mp3.mp3?alt=media&token=61c764ff-0467-43db-b953-5925cd8ef727"));
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_eight.mp3.mp3?alt=media&token=61c764ff-0467-43db-b953-5925cd8ef727";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/sri_sai_charitre_chapter_eight.mp3.mp3?alt=media&token=e5e29c7e-a217-471a-831d-225a2e378228";
+            request = new DownloadManager.Request(Uri.parse(file_url));
             request.setTitle("SaiCaritre Chapter 8");
-            chapternumberdialog2.setText("Saibaba Chapter number 8");
 
-            //Temporary working progress bar code.....
-//            progressBarInfo();
+            new DownloadFileFromURL().execute(file_url);
         }
 
         if (inuma == 9)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_nine.mp3?alt=media&token=feae26fc-9738-458a-adb6-17ae0c761d03"));
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_nine.mp3?alt=media&token=feae26fc-9738-458a-adb6-17ae0c761d03";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/sri_sai_charitre_chapter_nine.mp3?alt=media&token=bdb8d8b5-6a55-4cb7-a4e4-24338c7b8844";
+            request = new DownloadManager.Request(Uri.parse(file_url));
             request.setTitle("SaiCaritre Chapter 9");
-            chapternumberdialog2.setText("Saibaba Chapter number 9");
 
-            //Temporary working progress bar code.....
-//            progressBarInfo();
+            new DownloadFileFromURL().execute(file_url);
         }
 
         if (inuma == 10)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_ten.mp3?alt=media&token=5a925527-e396-4741-9ebc-fa5004bd5f9b"));
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_ten.mp3?alt=media&token=5a925527-e396-4741-9ebc-fa5004bd5f9b";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/sri_sai_charitre_chapter_ten.mp3?alt=media&token=618d74e2-3be8-4f1c-8459-5b8ec5d605ed";
+            request = new DownloadManager.Request(Uri.parse(file_url));
             request.setTitle("SaiCaritre Chapter 10");
-            chapternumberdialog2.setText("Saibaba Chapter number 10");
 
-            //Temporary working progress bar code.....
-//            progressBarInfo();
+            new DownloadFileFromURL().execute(file_url);
         }
 
         if (inuma == 11)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_eleven.mp3?alt=media&token=022e8b3a-1dba-4b59-a151-3c0481337369"));
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_eleven.mp3?alt=media&token=022e8b3a-1dba-4b59-a151-3c0481337369";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/sri_sai_charitre_chapter_eleven.mp3?alt=media&token=b1bc690d-1e9d-4826-a307-a18f070b3df8";
+            request = new DownloadManager.Request(Uri.parse(file_url));
             request.setTitle("SaiCaritre Chapter 11");
-            chapternumberdialog2.setText("Saibaba Chapter number 11");
 
-            //Temporary working progress bar code.....
-//            progressBarInfo();
+            new DownloadFileFromURL().execute(file_url);
         }
 
         if (inuma == 12)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_twelve.mp3?alt=media&token=2f826b65-bbea-4f12-bbb9-056f6340303a"));
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_twelve.mp3?alt=media&token=2f826b65-bbea-4f12-bbb9-056f6340303a";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/sri_sai_charitre_chapter_twelve.mp3?alt=media&token=d04ea8dd-47bc-4026-9119-888e99a22af2";
+            request = new DownloadManager.Request(Uri.parse(file_url));
             request.setTitle("SaiCaritre Chapter 12");
-            chapternumberdialog2.setText("Saibaba Chapter number 12");
 
-            //Temporary working progress bar code.....
-//            progressBarInfo();
+            new DownloadFileFromURL().execute(file_url);
         }
 
         if (inuma == 13)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_thirteen.mp3?alt=media&token=14e225b5-c43d-4710-bcab-76feac3a0dc0"));
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_thirteen.mp3?alt=media&token=14e225b5-c43d-4710-bcab-76feac3a0dc0";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/sri_sai_charitre_chapter_thirteen.mp3?alt=media&token=d374fd83-9844-47c8-bf17-bc559f65c883";
+            request = new DownloadManager.Request(Uri.parse(file_url));
             request.setTitle("SaiCaritre Chapter 13");
-            chapternumberdialog2.setText("Saibaba Chapter number 13");
 
-            //Temporary working progress bar code.....
-//            progressBarInfo();
+            new DownloadFileFromURL().execute(file_url);
         }
 
         if (inuma == 14)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_fourteen.mp3?alt=media&token=5a988ca9-4372-4292-8604-e8d26a383332"));
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_fourteen.mp3?alt=media&token=5a988ca9-4372-4292-8604-e8d26a383332";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/sri_sai_charitre_chapter_fourteen.mp3?alt=media&token=560f1208-398a-492a-a95b-373528b2fb07";
+            request = new DownloadManager.Request(Uri.parse(file_url));
             request.setTitle("SaiCaritre Chapter 14");
-            chapternumberdialog2.setText("Saibaba Chapter number 14");
 
-            //Temporary working progress bar code.....
-//            progressBarInfo();
+            new DownloadFileFromURL().execute(file_url);
         }
 
         if (inuma == 15)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_fifteen.mp3?alt=media&token=acd65f2e-0690-4a30-8b09-36d544bd5087"));
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_fifteen.mp3?alt=media&token=acd65f2e-0690-4a30-8b09-36d544bd5087";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/sri_sai_charitre_chapter_fifteen.mp3?alt=media&token=ba1a770d-0fca-447a-aad0-0d2eecec57a3";
+            request = new DownloadManager.Request(Uri.parse(file_url));
             request.setTitle("SaiCaritre Chapter 15");
-            chapternumberdialog2.setText("Saibaba Chapter number 15");
 
-            //Temporary working progress bar code.....
-//            progressBarInfo();
+            new DownloadFileFromURL().execute(file_url);
         }
 
         if (inuma == 16)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_sixteen_and_seventeen.mp3?alt=media&token=adb1b522-cf05-4ef2-ad5f-e3eb367b7cc9"));
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_sixteen_and_seventeen.mp3?alt=media&token=adb1b522-cf05-4ef2-ad5f-e3eb367b7cc9";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/sri_sai_charitre_chapter_sixteen_and_seventeen.mp3?alt=media&token=099ffa45-8ec8-4961-8524-8b177f3cea93";
+            request = new DownloadManager.Request(Uri.parse(file_url));
             request.setTitle("SaiCaritre Chapter 16 and 17");
-            chapternumberdialog2.setText("Saibaba Chapter number 16 and 17");
 
-            //Temporary working progress bar code.....
-//            progressBarInfo();
+            new DownloadFileFromURL().execute(file_url);
         }
 
         if (inuma == 17)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_eighteen_and_ninteen.mp3?alt=media&token=37723840-5aa9-42a7-a454-f8062bfa0781"));
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_eighteen_and_ninteen.mp3?alt=media&token=37723840-5aa9-42a7-a454-f8062bfa0781";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/sri_sai_charitre_chapter_eighteen_and_ninteen.mp3?alt=media&token=9e7c8f02-17ce-471c-aefc-4012fa730a3c";
+            request = new DownloadManager.Request(Uri.parse(file_url));
             request.setTitle("SaiCaritre Chapter 18 and 19");
-            chapternumberdialog2.setText("Saibaba Chapter number 18 and 19");
 
-            //Temporary working progress bar code.....
-//            progressBarInfo();
+            new DownloadFileFromURL().execute(file_url);
         }
 
         if (inuma == 18)
         {
-            request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_twenty.mp3?alt=media&token=b0cc114d-2957-4924-a94f-4922b1a72d4b"));
+//            file_url = "https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_twenty.mp3?alt=media&token=b0cc114d-2957-4924-a94f-4922b1a72d4b";
+            file_url = "https://firebasestorage.googleapis.com/v0/b/saicharitre-app.appspot.com/o/sri_sai_charitre_chapter_twenty.mp3?alt=media&token=5df91437-63bb-4d05-b880-0a0a670af611";
+            request = new DownloadManager.Request(Uri.parse(file_url));
             request.setTitle("SaiCaritre Chapter 20");
-            chapternumberdialog2.setText("Saibaba Chapter number 20");
 
-            //Temporary working progress bar code.....
-//            progressBarInfo();
+            new DownloadFileFromURL().execute(file_url);
         }
-//
 
-
-
-//        DownloadManager.Request request = new DownloadManager.Request(Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_three.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed"));
 
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
-//        request.setTitle("SaiCaritre Chapter 2");
         request.setDescription("Downloading file...");
         request.allowScanningByMediaScanner();
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
@@ -571,286 +540,6 @@ public class AudioCharitre extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-
-
-
-
-
-// to download file
-//    private class DownloadFile extends AsyncTask<String, Integer, String> {
-//
-//    @SuppressLint("WrongThread")
-//    @Override
-//    protected String doInBackground(String... url) {
-//        int count;
-//        File file;
-//
-//        for (int i = 0; i < 20; i++) {
-//            try {
-//                Thread.sleep(1000);
-//            } catch (InterruptedException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//            }
-////            progressbar.incrementProgressBy(10);
-//            progressbaraudiodownload.incrementProgressBy(10);
-//        }
-//
-//
-//
-//        //STARTS-> working try... comeback to this if experiment doesn't work
-////        try {
-////
-////            //this is where your download code starts
-////            //URL urls = new URL("url of your .mp3 file");
-////
-////            URL urls = new URL("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed");
-////            URLConnection conexion = urls.openConnection();
-////            conexion.connect();
-////
-////
-////            int lengthOfFile = conexion.getContentLength();
-////
-////
-////
-////
-////            // This code is written above when dialogue opens
-//////            downloadManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
-//////            Uri uri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed");
-//////            DownloadManager.Request request = new DownloadManager.Request(uri);
-//////            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-//////            Long reference = downloadManager.enqueue(request);
-////
-////
-////
-////
-////            // this will be useful so that you can show a tipical 0-100% progress bar
-////            int lenghtOfFile = conexion.getContentLength();
-////
-////            // downlod the file
-////            InputStream input = new BufferedInputStream(urls.openStream());
-//////            OutputStream output = new FileOutputStream("/sdcard/somewhere/nameofthefile.mp3");
-//////            OutputStream output = new FileOutputStream("/storage/emulated/0/DCIM/Camera/Saibaba_chapter1.mp3");
-////
-//////            OutputStream output = new FileOutputStream("/storage/emulated/0/Download/Saibaba_chapter1.mp3");
-////            OutputStream output = new FileOutputStream("/sdcard/Saibaba_chapter1.mp3");
-////
-////            byte data[] = new byte[1024];
-////
-////            long total = 0;
-////
-////            while ((count = input.read(data)) != -1) {
-////                total += count;
-////                // publishing the progress....
-////                publishProgress((int)(total*100/lenghtOfFile));
-////                output.write(data, 0, count);
-////            }
-////
-////            output.flush();
-////            output.close();
-////            input.close();
-////
-////
-////
-////        } catch (Exception e) {
-////        }
-////        return null;
-//
-//        //STOPS-> working try... comeback to this if experiment doesn't work 1st set of code
-//
-//
-//
-//        //STARTS-> working try... comeback to this if experiment doesn't work 2nd set of codes
-//
-//
-////        try {
-//////            URL urls = new URL(fileUrl);
-////            URL urls = new URL("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed");
-////            URLConnection conection = urls.openConnection();
-////            conection.connect();
-////
-////            int lenghtOfFile = conection.getContentLength();
-////
-////            InputStream input = conection.getInputStream();
-////
-//////            File SDCardRoot = Environment.getExternalStorageDirectory();
-////            File SDCardRoot = Environment.getRootDirectory();
-////            File folder = new File(SDCardRoot, "/storage/emulated/0/Download");
-////            if (!folder.exists())
-////                folder.mkdir();
-////            file = new File(folder, "Saibaba_chapter1.mp3");
-////            OutputStream output = new FileOutputStream(file);
-////
-////            byte data[] = new byte[1024];
-////
-////            long total = 0;
-////
-////            while ((count = input.read(data)) != -1) {
-////                total += count;
-//////                publishProgress("" + (int) ((total * 100) / lenghtOfFile));
-////                output.write(data, 0, count);
-////            }
-////
-////            output.flush();
-////            output.close();
-////            input.close();
-////
-////        }
-////        catch (Exception e)
-////        {
-////            return null;
-////        }
-//////        return file;
-////
-////        return String.valueOf(file);
-//
-//
-//        //STARTS-> working try... comeback to this if experiment doesn't work 2nd set of codes
-//
-//
-//
-//
-//
-//
-//
-//    }
-
-
-
-
-
-//    @Override
-//    protected void onPreExecute() {
-//        super.onPreExecute();
-////        showProgressDialog();
-//        progressbaraudiodownload.setProgress(0);
-//        progressbaraudiodownload.setMax(100);
-//        int progressbarstatus = 0;
-//        progressbaraudiodownload.setVisibility(ProgressBar.VISIBLE);
-//    }
-//
-//    @Override
-//    protected void onPostExecute(String s) {
-//        super.onPostExecute(s);
-//        progressbaraudiodownload.setVisibility(ProgressBar.GONE);
-//    }
-
-
-
-
-
-
-
-
-//    @Override
-//    protected void onProgressUpdate(String... values) {
-//
-//        super.onProgressUpdate(values);
-//    }
-
-
-
-//}
-// to download file
-
-
-
-//The code to download part 2 begins
-
-
-    private class DownloadFile extends AsyncTask<Void, String, File> {
-
-        /**
-         * Before starting background thread Show Progress Bar Dialog
-         * */
-
-
-
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//            showProgressDialog();
-//        }
-
-        /**
-         * Downloading file in background thread
-         * */
-        @Override
-        protected File doInBackground(Void... params) {
-            int count;
-            File file;
-            try {
-                URL url = new URL("https://firebasestorage.googleapis.com/v0/b/saibaba-charitre-app-b1977.appspot.com/o/sri_sai_charitre_chapter_one.mp3?alt=media&token=48e38f0d-3b1c-4bf4-bd9c-320e950520ed");
-                URLConnection conection = url.openConnection();
-                conection.connect();
-
-                int lenghtOfFile = conection.getContentLength();
-
-                InputStream input = conection.getInputStream();
-
-                File SDCardRoot = Environment.getExternalStorageDirectory();
-
-                File folder = new File(SDCardRoot, "/storage/emulated/0/Download");
-                if (!folder.exists())
-                    folder.mkdir();
-                file = new File(folder, "Saibaba_chapter1.mp3");
-
-                OutputStream output = new FileOutputStream(file);
-
-                byte data[] = new byte[1024];
-
-                long total = 0;
-
-                while ((count = input.read(data)) != -1) {
-                    total += count;
-
-                    publishProgress("" + (int) ((total * 100) / lenghtOfFile));
-
-                    output.write(data, 0, count);
-                }
-
-                output.flush();
-
-                output.close();
-                input.close();
-
-            } catch (Exception e) {
-                return null;
-            }
-            return file;
-        }
-
-        /**
-         * Updating progress bar
-         * */
-        protected void onProgressUpdate(String... progress) {
-            // setting progress percentage
-            progressbaraudiodownload.setProgress(Integer.parseInt(progress[0]));
-        }
-
-        /**
-         * After completing background task Dismiss the progress dialog
-         * **/
-
-
-//        @Override
-//        protected void onPostExecute(File file) {
-//            // dismiss the dialog after the file was downloaded
-//            dismissProgressDialog();
-//        }
-
-
-
-    }
-
-
-
-
-
-
-
-
-
     private boolean haveNetwork()
     {
         boolean have_WIFI = false;
@@ -913,4 +602,201 @@ public class AudioCharitre extends AppCompatActivity
 //            }
 //        }).start();
 //    }
+
+
+    class DownloadFileFromURL extends AsyncTask<String, String, String> {
+
+        /**
+         * Before starting background thread
+         * Show Progress Bar Dialog
+         * */
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+//            showDialog(progress_bar_type);
+            dialog = new Dialog(AudioCharitre.this);
+            dialog.setContentView(R.layout.downloading_dialog);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.show();
+
+
+
+            if (dialog.isShowing())
+            {
+
+
+//              downloadManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
+                progressbaraudiodownload = (ProgressBar)dialog.findViewById(R.id.progressbaraudiodownload);
+                progressText = (TextView)dialog.findViewById(R.id.progressText);
+                chapternumberdialog2 = (TextView)dialog.findViewById(R.id.chapternumberdialog2);
+
+                if (inum == 0)
+                {
+                    chapternumberdialog2.setText("Saibaba Aarati Song");
+                }
+
+                if (inum == 1)
+                {
+                    chapternumberdialog2.setText("Saibaba Chapter number 1");
+                }
+
+                if (inum == 2)
+                {
+                    chapternumberdialog2.setText("Saibaba Chapter number 2");
+                }
+
+                if (inum == 3)
+                {
+                    chapternumberdialog2.setText("Saibaba Chapter number 3");
+                }
+
+                if (inum == 4)
+                {
+                    chapternumberdialog2.setText("Saibaba Chapter number 4");
+                }
+
+                if (inum == 5)
+                {
+                    chapternumberdialog2.setText("Saibaba Chapter number 5");
+                }
+
+                if (inum == 6)
+                {
+                    chapternumberdialog2.setText("Saibaba Chapter number 6");
+                }
+
+                if (inum == 7)
+                {
+                    chapternumberdialog2.setText("Saibaba Chapter number 7");
+                }
+
+                if (inum == 8)
+                {
+                    chapternumberdialog2.setText("Saibaba Chapter number 8");
+                }
+
+                if (inum == 9)
+                {
+                    chapternumberdialog2.setText("Saibaba Chapter number 9");
+                }
+
+                if (inum == 10)
+                {
+                    chapternumberdialog2.setText("Saibaba Chapter number 10");
+                }
+
+                if (inum == 11)
+                {
+                    chapternumberdialog2.setText("Saibaba Chapter number 11");
+                }
+
+                if (inum == 12)
+                {
+                    chapternumberdialog2.setText("Saibaba Chapter number 12");
+                }
+
+                if (inum == 13)
+                {
+                    chapternumberdialog2.setText("Saibaba Chapter number 13");
+                }
+
+                if (inum == 14)
+                {
+                    chapternumberdialog2.setText("Saibaba Chapter number 14");
+                }
+
+                if (inum == 15)
+                {
+                    chapternumberdialog2.setText("Saibaba Chapter number 15");
+                }
+
+                if (inum == 16)
+                {
+                    chapternumberdialog2.setText("Saibaba Chapter number 16 and 17");
+                }
+
+                if (inum == 17)
+                {
+                    chapternumberdialog2.setText("Saibaba Chapter number 18 and 19");
+                }
+
+                if (inum == 18)
+                {
+                    chapternumberdialog2.setText("Saibaba Chapter number 20");
+                }
+            }
+
+            progressText.setText("0%");
+        }
+
+        /**
+         * Downloading file in background thread
+         * */
+        @Override
+        protected String doInBackground(String... f_url) {
+            int count;
+            try {
+                URL url = new URL(f_url[0]);
+                URLConnection conection = url.openConnection();
+                conection.connect();
+                // getting file length
+                int lenghtOfFile = conection.getContentLength();
+
+                // input stream to read file - with 8k buffer
+                InputStream input = new BufferedInputStream(url.openStream(), 8192);
+
+                // Output stream to write file
+//                OutputStream output = new FileOutputStream("/sdcard/downloadedfile.jpg");
+
+                byte data[] = new byte[1024];
+
+                long total = 0;
+
+                while ((count = input.read(data)) != -1) {
+                    total += count;
+                    // publishing the progress....
+                    // After this onProgressUpdate will be called
+                    publishProgress(""+(int)((total*100)/lenghtOfFile));
+
+
+                    // writing data to file
+//                    output.write(data, 0, count);
+                }
+
+                // flushing output
+//                output.flush();
+
+                // closing streams
+//                output.close();
+                input.close();
+
+            } catch (Exception e) {
+                Log.e("Error: ", e.getMessage());
+            }
+
+            return null;
+        }
+
+        /**
+         * Updating progress bar
+         * */
+        protected void onProgressUpdate(String... progress) {
+            // setting progress percentage
+            progressbaraudiodownload.setProgress(Integer.parseInt(progress[0]));
+            progressText.setText(progress[0]+"%");
+        }
+
+        /**
+         * After completing background task
+         * Dismiss the progress dialog
+         * **/
+        @Override
+        protected void onPostExecute(String file_url) {
+            // dismiss the dialog after the file was downloaded
+//            dismissDialog(progress_bar_type);
+            dialog.dismiss();
+        }
+
+    }
 }
